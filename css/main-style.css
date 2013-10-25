@@ -1,0 +1,8 @@
+/* Main style sheet for Metromap 2 */
+
+body {
+	background-color: #efefef;
+	color: #000000;
+	font-family: 'Oxygen', sans-serif;
+	padding: 10px 10px 10px 10px;
+}
