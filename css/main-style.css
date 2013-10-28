@@ -75,4 +75,31 @@ body {
 	border-right: 0;
 	border-radius: 0 3px 3px 0;
 }
+
+.cluster {
+	width: 100%;
+}
+.cluster .cluster-box{
+	/*position: relative;
+	*//*background: rgba(0, 0, 0, 0.3);
+*/background: url('http://img.justthetravel.com/Justthetravel-Golden-Gate.jpg');
+	filter: grayscale(50%);
+	
+}
+/*.cluster .cluster-background-image{
+	width:100%;
+	height: 100%;
+	background:blue;
+	opacity: 0.5;
+}
+.cluster .cluster-backgroud-overlay-color {
+	position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 2px;
+    height: 5px;
+    background: red;
+
+}
+*/
 </style>
