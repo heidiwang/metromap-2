@@ -42,7 +42,7 @@ body { font-family: sans-serif; }
 }
 
 .item:hover .item-content {
-  background: #0519F5;
+  background: #1baae3;
   cursor: pointer;
 }
 

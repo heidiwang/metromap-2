@@ -21,7 +21,10 @@ docReady( function() {
 		var testClassItemContent = document.createElement('div');
 		testClassItemContent.className = "item-content";
 		
-		testClass.appendChild(testClassItemContent);
+		var backgroundPic = document.createElement('div');
+		backgroundPic.className = "previewPic";
+
+
 		var rand = Math.random()*300;
 		if (rand<=100) {
 			rand = 100;
@@ -29,7 +32,8 @@ docReady( function() {
 		console.log(rand);
 		testClass.style.width=rand +"px";
 		testClassItemContent.style.width=rand +"px";
-		
+		backgroundPic.style.width=rand +"px";
+
 		var rand = Math.random()*300;
 		if (rand<=100) {
 			rand = 100;
@@ -37,9 +41,15 @@ docReady( function() {
 		
 		testClass.style.height=rand +"px";
 		testClassItemContent.style.height=rand +"px";
+		backgroundPic.style.height=rand +"px";
 
 
 		container.appendChild( testClass );
+		testClass.appendChild(testClassItemContent);
+		testClassItemContent.appendChild(backgroundPic);
+		backgroundPic.setAttribute("url", "'http://img.justthetravel.com/Justthetravel-Golden-Gate.jpg'");
+
+		
 		msnry.appended( testClass );
 		msnry.layout();
 
