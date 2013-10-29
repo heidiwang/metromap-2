@@ -42,31 +42,15 @@ body { font-family: sans-serif; }
 }
 
 .item:hover .item-content {
-  border-color: white;
-  background: #A2C;
+  background: #0519F5;
   cursor: pointer;
 }
 
-/* both item and item content change size */
-.item.is-expanded,
-.item.is-expanded .item-content {
-  width: 180px;
-  height: 120px;
-}
-
-.item.is-expanded {
-  z-index: 2;
-}
-
-.item.is-expanded .item-content {
-  background: #F90;
-}
 
 #test {
   height: 250px;
   width: 500px;
   background: #3fb8e8;
-  border: 2px solid #333;
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
   -webkit-transition: width 0.4s, height 0.4s;
