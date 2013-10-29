@@ -6165,3 +6165,16 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.item {
+ width: 25%;
+
+  font-weight: bold;
+  text-align: center;
+
+  font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+ }
+
+.item.w2 { width: 50%; }
+
