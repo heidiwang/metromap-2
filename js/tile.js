@@ -19,7 +19,7 @@ docReady( function() {
 		console.log(articles.length);
 
 		// draw each article box
-		for (var i = 0; i < articles.length; i++)  {
+		for (var i = 0; i < 3; i++)  {
 			
 			// create div with article+i ID
 			var article = document.createElement('div');
