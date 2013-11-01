@@ -20,7 +20,7 @@ docReady( function() {
 		
 		var testClassItemContent = document.createElement('div');
 		testClassItemContent.className = "item-content";
-		
+		testClassItemContent.innerHTML ="<h2>Test</h2>"
 		var backgroundPic = document.createElement('div');
 		backgroundPic.className = "previewPic";
 
