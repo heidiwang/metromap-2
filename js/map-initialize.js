@@ -212,7 +212,7 @@ function sortByDate(nodes) {
 }
 
 function getWindowWidth() {
-	return $(window).width() - 100;
+	return $(window).width();
 }
 
 function initializeColors(numColors){
