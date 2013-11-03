@@ -214,6 +214,12 @@ function drawNodes() {
 			align: 'center'
 		});
 		
+		// Add event handlers
+		hoverCursor(node);
+		hoverCursor(label);
+		nodeClick(node, nodes[n]);
+		nodeClick(label, nodes[n]);
+		
 		layer.add(node);
 		layer.add(label);
 	}
@@ -288,4 +294,23 @@ function get_random_color() {
 			color += letters[Math.round(Math.random() * 15)];
 	}
 	return color;
+}
+
+/*****
+Event handlers
+*****/
+
+function hoverCursor(object) {
+	object.on('mouseenter', function() {
+		document.body.style.cursor = 'pointer';
+	});
+	object.on('mouseleave', function() {
+		document.body.style.cursor = 'default';
+	});
+}
+
+function nodeClick(object, node) {
+	object.on('click', function() {
+		populateArticles(node.id);
+	});
 }

@@ -127,9 +127,10 @@ docReady( function() {
 	function getArticles(nodeId) {
 		return articlesObject;
 	}
-	
-
-
-
 
 });
+
+function populateArticles(nodeID) {
+	console.log("GET ARTICLES FOR NODE " + nodeID);
+	// logic to populate articles goes here
+}
