@@ -228,7 +228,7 @@ function drawLines() {
 			
 			var segment = new Kinetic.Line({
 				points: [startNode.x, startNode.y, endNode.x, endNode.y],
-				stroke: startNode.color,
+				stroke: colors[lines[l].id],
 				strokeWidth: 20
 			});
 		
