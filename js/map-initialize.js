@@ -187,30 +187,30 @@ function init() {
 	});
 
 	layer = new Kinetic.Layer();
+	setNodeProperties();
+	drawLines();
 	drawNodes();
 	stage.add(layer);
 }
 
 function drawNodes() {
-	setNodeProperties();
 	for (var n in nodes) {
 		var node = new Kinetic.Circle({
-			radius: nodes[n].width,
+			radius: nodes[n].radius,
 			fill: nodes[n].color,
 			x: nodes[n].x,
 			y: nodes[n].y
 		});
-		layer.add(node);
 		
-		var offset = nodes[n].width/2;
 		var label = new Kinetic.Text({
-			x: nodes[n].x - offset,
-			y: nodes[n].y - offset,
+			x: nodes[n].x - nodes[n].radius*.75,
+			y: nodes[n].y - nodes[n].radius*.75,
 			text: nodes[n].label,
 			fontSize: nodes[n].importance * 5,
 			fontFamily: 'Calibri',
-			width: nodes[n].width,
-			fill: 'white',
+			width: nodes[n].radius*1.5,
+			height: nodes[n].radius*1.5,
+			fill: 'black',
 			align: 'center'
 		});
 		
@@ -219,12 +219,38 @@ function drawNodes() {
 	}
 }
 
+function drawLines() {
+	for (var l in lines) {
+		var currentNodeSet = lines[l].nodeIDs;
+		for (var n = 0; n < currentNodeSet.length - 1; n++) {
+			var startNode = getNodeByID(currentNodeSet[n]);
+			var endNode = getNodeByID(currentNodeSet[n+1]);
+			
+			var segment = new Kinetic.Line({
+				points: [startNode.x, startNode.y, endNode.x, endNode.y],
+				stroke: startNode.color,
+				strokeWidth: 20
+			});
+		
+			layer.add(segment);
+		}
+	}
+}
+
 function setNodeProperties() {
 	for (var n in nodes) {
-		nodes[n].x = n*100;
-		nodes[n].y = nodes[n].lineIDs[0] * 75;
-		nodes[n].width = nodes[n].importance * 25;
-		nodes[n].color = colors[nodes[n].lineIDs[0]]; 	// need to change this once I incorporate shared nodes
+		var xspacing = getWindowWidth()/(nodes.length);
+		var yspacing = 400/lines.length;
+		nodes[n].x = xspacing * n + xspacing/2;
+		nodes[n].y = yspacing * nodes[n].lineIDs[0];
+		nodes[n].radius = nodes[n].importance * 20;
+		
+		if (nodes[n].lineIDs.length == 1) {	//singleton node
+			nodes[n].color = colors[nodes[n].lineIDs[0]];
+		}
+		else {	//shared node
+			nodes[n].color = "#aaaaaa";
+		}
 	}
 }
 
@@ -239,9 +265,18 @@ function getWindowWidth() {
 	return $(window).width();
 }
 
+function getNodeByID(id) {
+	for (var n in nodes) {
+		if (nodes[n].id == id) {
+			return nodes[n];
+		}
+	}
+	return null;
+}
+
 function initializeColors(numColors){
 	colors = {};
-	for (var i = 0; i < numColors; i++) {
+	for (var i = 1; i <= numColors; i++) {
 		colors[i] = get_random_color();
 	}
 }
