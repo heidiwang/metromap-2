@@ -1,5 +1,3 @@
-
-
 // Temporarily use dummy data:
 data = {"nodes": [
 	{"id": "1", 
@@ -170,6 +168,8 @@ data = {"nodes": [
 	}
 ]
 }
+nodes = data.nodes;
+lines = data.lines;
 
 // Global variables
 var stage;
@@ -192,15 +192,39 @@ function init() {
 }
 
 function drawNodes() {
-	nodes = sortByDate(data.nodes);
-	for (n in nodes) {
+	setNodeProperties();
+	for (var n in nodes) {
 		var node = new Kinetic.Circle({
-			radius: nodes[n].importance * 25,
-			fill: colors[nodes[n].lineIDs[0]],
-			x: n*100,
-			y: nodes[n].lineIDs[0] * 75
+			radius: nodes[n].width,
+			fill: nodes[n].color,
+			x: nodes[n].x,
+			y: nodes[n].y
 		});
 		layer.add(node);
+		
+		var offset = nodes[n].width/2;
+		var label = new Kinetic.Text({
+			x: nodes[n].x - offset,
+			y: nodes[n].y - offset,
+			text: nodes[n].label,
+			fontSize: nodes[n].importance * 5,
+			fontFamily: 'Calibri',
+			width: nodes[n].width,
+			fill: 'white',
+			align: 'center'
+		});
+		
+		layer.add(node);
+		layer.add(label);
+	}
+}
+
+function setNodeProperties() {
+	for (var n in nodes) {
+		nodes[n].x = n*100;
+		nodes[n].y = nodes[n].lineIDs[0] * 75;
+		nodes[n].width = nodes[n].importance * 25;
+		nodes[n].color = colors[nodes[n].lineIDs[0]]; 	// need to change this once I incorporate shared nodes
 	}
 }
 
