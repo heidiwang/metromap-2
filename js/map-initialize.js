@@ -311,6 +311,6 @@ function hoverCursor(object) {
 
 function nodeClick(object, node) {
 	object.on('click', function() {
-		populateArticles(node.id);
+		populateArticles(node);
 	});
 }
