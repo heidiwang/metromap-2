@@ -83,7 +83,7 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 	var articleColor = node.color;
 	
 	var currentWidthInLine = 0;
-	var maxWidth = container.clientWidth;
+	var maxWidth = container.clientWidth - 5;
 console.log('------------------------------------------------------');
 	console.log('MaxWidth: ' + maxWidth);
 	
@@ -97,9 +97,9 @@ console.log('------------------------------------------------------');
 		
 
 		var articleWidth = getWidth(articles[i], widthReference, importanceUnit)
-		console.log('article width: ' + articleWidth);
+		// console.log('article width: ' + articleWidth);
 		currentWidthInLine += articleWidth;
-		console.log("currentWidthInLine: " + currentWidthInLine);
+		// console.log("currentWidthInLine: " + currentWidthInLine);
 
 		// get the right width of each element: the last item in the row gets expanded to the maxSize of the container
 		// if not last item
@@ -108,24 +108,24 @@ console.log('------------------------------------------------------');
 			// if last item in row
 			if (nextArticleWidth + currentWidthInLine > maxWidth) {
 				article.style.width = articleWidth + (maxWidth - currentWidthInLine) +"px";
-				console.log("in last item , next ArticleWIdth;" + nextArticleWidth );
-				console.log("in last item ;" + article.style.width );
-				console.log('currentWidthInLine:' + currentWidthInLine);
-				console.log('maxWidth:' + maxWidth);
+				// console.log("in last item , next ArticleWIdth;" + nextArticleWidth );
+				// console.log("in last item ;" + article.style.width );
+				// console.log('currentWidthInLine:' + currentWidthInLine);
+				// console.log('maxWidth:' + maxWidth);
 				currentWidthInLine = 0;
 			}
 			else {
-				console.log('else');
+				// console.log('else');
 				article.style.width = articleWidth +"px";
 			}
 		}
 		else {
-			console.log('in last element else');
+			// console.log('in last element else');
 			article.style.width = articleWidth +"px";
 		}		
 		
-		console.log("after the loop :" + article.style.width);
-		console.log("-----next Tile");
+		// console.log("after the loop :" + article.style.width);
+		// console.log("-----next Tile");
 		article.style.height = getHeigth(articles[i], heightReference, heightImportance, importanceUnit)  +"px";
 		// article.style.width = "250px";
 		// article.style.height = "250px";
@@ -137,12 +137,16 @@ console.log('------------------------------------------------------');
 		/// add text to articleDiv
 		var articleText = document.createElement('div');
 		articleText.className = "item-content";
-		articleText.innerHTML = '<h4>'+  articles[i].title + '</h4>' ;
-		$(articleText).append("<div class='previewText'>" + articles[i].timestamp + ": " + articles[i].previewText.substring(0,100) + "... </br> Read on: " + articles[i].publisher + "</div>");
+		articleText.innerHTML = '<div class="title">'+  articles[i].title + '</div>' ;
+		$(articleText).append("<div class='previewText'>" + articles[i].previewText.substring(0,100) + "... </br></div>");
+		// $(articleText).append("<div class='timestamp'>" + articles[i].timestamp + "</div>");
+		// $(articleText).append("<div class='publisher'> By: " + articles[i].publisher + " --> </div>");
+
 		articleText.style.width = article.style.width;
 		articleText.style.height = article.style.height;
 		articleText.style.background = articleColor;
 		article.appendChild(articleText);
+
 		// add backGround picture to articleDiv
 		var articleBackground = document.createElement('div');
 		articleBackground.className = "article-background-pic";
