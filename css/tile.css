@@ -33,7 +33,7 @@
   background: #3fb8e8;
   border: 1px solid #333;
   border-color: hsla(0, 100%, 100%, 0.5);
-  border-radius: 3px;
+  border-radius: 1px;
   -webkit-transition: width 0.4s, height 0.4s;
      -moz-transition: width 0.4s, height 0.4s;
        -o-transition: width 0.4s, height 0.4s;

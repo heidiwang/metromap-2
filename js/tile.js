@@ -46,18 +46,15 @@ function populateArticles(node) {
 	
 	// random # articles are shown -
 	startingIndex = Math.floor(Math.random()*articles.length);
-	//startingIndex = 0;
+	// startingIndex = 0;
 	if (startingIndex == articles.length-1){
 		startingIndex = articles.length-2;
 	}
 	drawArticles(startingIndex, articles.length-1, articles, msnry, node);		
 
+	
 	//Binds event listener to window resize, so layout is triggered when the browser window is resized.
 	msnry.bindResize()
-
-	//expandRowsToCompleteWidth(startingIndex, articles.length-1, articles, msnry, node);
-console.log(document);
-console.log(document.getElementById("article6"));
 
 }
 
@@ -86,7 +83,8 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 	var articleColor = node.color;
 	
 	var currentWidthInLine = 0;
-	var maxWidth = container.clientWidth;
+	var maxWidth = container.clientWidth - 15;
+console.log('------------------------------------------------------');
 	console.log('MaxWidth: ' + maxWidth);
 	
 	// draw each article box
@@ -96,7 +94,6 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		var article = document.createElement('div');
 		article.id ='article'+i;	
 		article.className = "item";
-		container.appendChild( article );
 		
 
 		var articleWidth = getWidth(articles[i], widthReference, importanceUnit)
@@ -106,11 +103,12 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 
 		// get the right width of each element: the last item in the row gets expanded to the maxSize of the container
 		// if not last item
-		if (i < endArtInd -1 ){
+		if (i < endArtInd - 1 ){
 			var nextArticleWidth = getWidth(articles[i+1], widthReference, importanceUnit)
 			// if last item in row
 			if (nextArticleWidth + currentWidthInLine > maxWidth) {
 				article.style.width = articleWidth + (maxWidth - currentWidthInLine) +"px";
+				console.log("in last item , next ArticleWIdth;" + nextArticleWidth );
 				console.log("in last item ;" + article.style.width );
 				console.log('currentWidthInLine:' + currentWidthInLine);
 				console.log('maxWidth:' + maxWidth);
@@ -122,13 +120,17 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 			}
 		}
 		else {
+			console.log('in last element else');
 			article.style.width = articleWidth +"px";
 		}		
 		
-
+		console.log("after the loop :" + article.style.width);
+		console.log("-----next Tile");
 		article.style.height = getHeigth(articles[i], heightReference, heightImportance, importanceUnit)  +"px";
 		// article.style.width = "250px";
 		// article.style.height = "250px";
+		container.appendChild( article );
+
 		addClickListener(articles, article, i);
 
 
@@ -136,7 +138,7 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		var articleText = document.createElement('div');
 		articleText.className = "item-content";
 		articleText.innerHTML = '<h4>'+  articles[i].title + '</h4>' ;
-		$(articleText).append("<div class='previewText'>" + articles[i].timestamp + ": " + articles[i].previewText.substring(0,170) + "... </br> Read on: " + articles[i].publisher + "</div>");
+		$(articleText).append("<div class='previewText'>" + articles[i].timestamp + ": " + articles[i].previewText.substring(0,100) + "... </br> Read on: " + articles[i].publisher + "</div>");
 		articleText.style.width = article.style.width;
 		articleText.style.height = article.style.height;
 		articleText.style.background = articleColor;
@@ -154,47 +156,16 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		article.appendChild(articleBackground);
 
 		//makes visual,appearing effects
-		msnry.appended( article );
 		msnry.layout();
+
+		msnry.appended( article );
+
 	}
 
 
 
 }
 
-// make rows 100% wide
-function expandRowsToCompleteWidth(startingArtInd, endArtInd, articles, msnry, node) {
-
-	console.log(msnry);
-	// loop through all the articles
-	for (var i = startingArtInd; i < endArtInd; i++)  {
-		var currentArticleDiv = $('article'+ i);
-		var currentArticleDiv = document.getElementById('article'+i);
-
-		// get nextArticleDiv unless i is the last one
-		if ( i < endArtInd - 1){
-			var nextArticleDiv = $('article'+i+1);
-		}
-		else {
-			var nextArticleDiv = $('article'+i);
-		}
-
-		// console.log(currentArticleDiv.offsetLeft);
-		// console.log(currentArticleDiv);
-
-		// this is the case when there is a new row
-		if (currentArticleDiv.offsetLeft > nextArticleDiv.offsetLeft) {
-			console.log("next line");
-		}
-
-//		console.log(i);
-//		console.log(currentArticleDiv);	
-
-		//var nextArticleDiv
-		//if ()
-
-	}
-}
 
 // forwards to respective article URL on a click
 function addClickListener(articles, article, i) {	
