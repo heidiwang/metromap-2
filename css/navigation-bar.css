@@ -1,0 +1,27 @@
+.main-menu {
+    padding-bottom: 15px;
+    width:100%;
+    background: rgb(255,255,255);
+}
+
+/*The Top Logo Part*/
+.brand {
+    width:100%;
+    
+    border-bottom: 5px solid rgb(0,0,0);
+    position:relative;
+}
+   
+/*The Logo*/
+.brand .logo {
+    text-align:left;
+    color: #000000;
+    font-size: 2em;
+    font-weight:bolder;
+}
+
+.brand .info-link {
+    color: #000000;
+    text-align:right;
+}
+
