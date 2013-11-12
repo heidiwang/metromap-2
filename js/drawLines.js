@@ -15,7 +15,6 @@ function drawLines() {
 			
 			var dups = getDups(startNode.lineIDs, endNode.lineIDs);
 			if (dups.length > 1) {
-				console.log("found dupes");
 				drawRainbowSeg(startNode, endNode, dups, lineWidth);
 			}
 	
@@ -42,17 +41,8 @@ function drawRainbowSeg(leftNode, rightNode, dups, lineWidth) {
 	var currentPointLeft = offsetPoint (basePointLeft, width/2, perpSlope, false);
 	var currentPointRight = offsetPoint (basePointRight, width/2, perpSlope, false);
 	
-	console.log(leftNodePoint);
-	console.log(rightNodePoint);
-	console.log(width);
-	console.log(perpSlope);
-	console.log(basePointLeft);
-	console.log(basePointRight);
-	console.log(dups);
-	
 	for (var s in dups) {
 		var color = colors[parseInt(dups[s])];
-		console.log(color);
 		
 		var lineSegment = new Kinetic.Line({
 			points: [currentPointLeft, currentPointRight],

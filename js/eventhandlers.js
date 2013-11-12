@@ -4,15 +4,15 @@ Map: Event handling
 
 function hoverCursor(object, node) {
 	object.on('mouseenter', function() {
-		if (node.id != currentSelectedNode.id) {
-			darkenColor(node.circleShape);
+		if (node.id != currentSelectedNode) {
+			darkenColor(node);
 			layer.draw();
 		}
 		document.body.style.cursor = 'pointer';
 	});
 	object.on('mouseleave', function() {
-		if (node.id != currentSelectedNode.id) {
-			lightenColor(node.circleShape);
+		if (node.id != currentSelectedNode) {
+			lightenColor(node);
 			layer.draw();
 		}
 		document.body.style.cursor = 'default';
@@ -21,9 +21,8 @@ function hoverCursor(object, node) {
 
 function nodeClick(object, node) {
 	object.on('click', function() {
-		//changeSelectedNode(node);
-		lightenColor(currentSelectedNode.circleShape);
-		currentSelectedNode = node;
+		lightenColor(getNodeByID(currentSelectedNode));
+		currentSelectedNode = node.id;
 		layer.draw();
 		populateArticles(node);
 	});
@@ -31,22 +30,23 @@ function nodeClick(object, node) {
 
 function changeSelectedNode(node) {
 	// make the previously selected node back to normal
-	lightenColor(currentSelectedNode.circleShape);
+	lightenColor(currentSelectedNode);
 	
 	// darken the new selected node
 	currentSelectedNode = node;
-	darkenColor(currentSelectedNode.circleShape);
+	darkenColor(currentSelectedNode);
 	layer.draw();
 }
 
-function darkenColor(circleShape) {
-	circleShape.setFillR(Math.max(0, circleShape.getFillR() - 60));
-	circleShape.setFillG(Math.max(0, circleShape.getFillG() - 60));
-	circleShape.setFillB(Math.max(0, circleShape.getFillB() - 60));
+function darkenColor(nodeData) {
+	var firstLine = nodeData.lineIDs[0];
+	var darkColors = {"1": "#940068", "2": "#188686", "3": "#3db65c", "4": "#694aad", "5": "#ac6700"};
+	var circleShape = nodeData.circleShape;
+	circleShape.setFill(darkColors[firstLine]);
 }
 
-function lightenColor(circleShape) {
-	circleShape.setFillR(Math.min(255, circleShape.getFillR() + 60));
-	circleShape.setFillG(Math.min(255, circleShape.getFillG() + 60));
-	circleShape.setFillB(Math.min(255, circleShape.getFillB() + 60));
+function lightenColor(nodeData) {
+	var firstLine = nodeData.lineIDs[0];
+	var circleShape = nodeData.circleShape;
+	circleShape.setFill(colors[firstLine]);
 }

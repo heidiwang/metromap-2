@@ -19,8 +19,6 @@ function drawTime() {
 	var twothird_date = dateSortedNodes[twothird_index].time;
 	var onethird_xpos = dateSortedNodes[onethird_index].x;
 	var twothird_xpos = dateSortedNodes[twothird_index].x;
-	console.log(onethird_date);
-	console.log(twothird_date);
 	
 	var onethird_line = new Kinetic.Line({
 		points: [onethird_xpos, 0, onethird_xpos, 400],

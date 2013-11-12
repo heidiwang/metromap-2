@@ -167,7 +167,7 @@ var data = {"nodes": [
 	},
 	{"id": "5",
 	"label": "turkey, flotilla, turkish, nine, boat",
-	"nodeIDs": ["19", "20", "21"]
+	"nodeIDs": ["16", "19", "20", "21"]
 	}
 ]
 }
@@ -177,16 +177,14 @@ var lines = data.lines;
 // Global variables
 var stage;
 var layer;
-var colors; //for now, it's random; later we can add logic to select it from a pre-defined palette
+var colors = {"1": "#D50096", "2": "#22C3C3", "3": "#48E470", "4": "#9c6eff", "5": "#FF9900"}; // still need to make this dynamic
 var currentSelectedNode = 11;
 
-
-initializeColors(data.lines.length);
 stage = new Kinetic.Stage({
 	container: 'map-container',
 		width: getWindowWidth(),
 		height: 400
 });
 
-layer = new Kinetic.Layer();
+layer = new Kinetic.Layer({width: getWindowWidth(), height: 400});
 setNodeProperties();
