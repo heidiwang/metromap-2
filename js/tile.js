@@ -83,7 +83,7 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 	var articleColor = node.color;
 	
 	var currentWidthInLine = 0;
-	var maxWidth = container.clientWidth - 15;
+	var maxWidth = container.clientWidth;
 console.log('------------------------------------------------------');
 	console.log('MaxWidth: ' + maxWidth);
 	
