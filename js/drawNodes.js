@@ -1,3 +1,7 @@
+/**************************
+Map: Draw nodes
+**************************/
+
 function drawNodes() {
 	for (var n in nodes) {
 	
@@ -63,12 +67,4 @@ function drawSharedArcs(nodeData) {
 	});
 	
 	layer.add(stroke);
-}
-
-function getLineById(lineId) {
-	for (var l in lines) {
-		if (lines[l].id == lineId) {
-			return lines[l];
-		}
-	}
 }

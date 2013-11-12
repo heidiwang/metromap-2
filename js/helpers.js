@@ -1,25 +1,6 @@
-
-function changeSelectedNode(node) {
-	// make the previously selected node back to normal
-	lightenColor(currentSelectedNode.circleShape);
-	
-	// darken the new selected node
-	currentSelectedNode = node;
-	darkenColor(currentSelectedNode.circleShape);
-	layer.draw();
-}
-
-function darkenColor(circleShape) {
-	circleShape.setFillR(Math.max(0, circleShape.getFillR() - 60));
-	circleShape.setFillG(Math.max(0, circleShape.getFillG() - 60));
-	circleShape.setFillB(Math.max(0, circleShape.getFillB() - 60));
-}
-
-function lightenColor(circleShape) {
-	circleShape.setFillR(Math.min(255, circleShape.getFillR() + 60));
-	circleShape.setFillG(Math.min(255, circleShape.getFillG() + 60));
-	circleShape.setFillB(Math.min(255, circleShape.getFillB() + 60));
-}
+/**************************
+Map: Helpers
+**************************/
 
 function setNodeProperties() {
 	for (var n in nodes) {
@@ -59,6 +40,14 @@ function getNodeByID(id) {
 	return null;
 }
 
+function getLineById(lineId) {
+	for (var l in lines) {
+		if (lines[l].id == lineId) {
+			return lines[l];
+		}
+	}
+}
+
 function initializeColors(numColors){
 	colors = {};
 	for (var i = 1; i <= numColors; i++) {
@@ -74,3 +63,4 @@ function get_random_color() {
 	}
 	return color;
 }
+

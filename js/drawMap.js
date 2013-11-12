@@ -1,3 +1,7 @@
+/**************************
+Map: Kick off the map
+**************************/
+
 drawMap();
 
 function drawMap() {
@@ -23,13 +27,11 @@ function drawTime() {
 		stroke: 'black',
 		strokeWidth: 1,
 	});
-	
 	var twothird_line = new Kinetic.Line({
 		points: [twothird_xpos, 0, twothird_xpos, 400],
 		stroke: 'black',
 		strokeWidth: 1,
 	});
-	
 	var onethird_label = new Kinetic.Text({
 		x: onethird_xpos+5,
 		y: 380,
@@ -38,7 +40,6 @@ function drawTime() {
 		fontFamily: 'Calibri',
 		fill: 'black'
 	});
-	
 	var twothird_label = new Kinetic.Text({
 		x: twothird_xpos+5,
 		y: 380,

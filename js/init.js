@@ -1,4 +1,7 @@
-// Temporarily use dummy data:
+/**************************
+Map: Initialize variables and stage/canvas
+**************************/
+
 var data = {"nodes": [
 	{"id": "1", 
 	"label": "gaza palestinians fire united leaders",
