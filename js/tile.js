@@ -6,10 +6,9 @@
 var node;
 var articles;
 var container = document.querySelector('.masonry');
-container.style.width = "100%";
 
 //  given data for article tiles
-var colorArray = ["#3fb8e8", "#e86f3f", "#3f63e8", "#e83f63", "#b8e83f"];
+// var colorArray = getArrayOfColors(5);
 var nodeId = 0;
 var widthReference = 200;
 var heightReference = 200;
@@ -30,7 +29,7 @@ function getArticlesObj(node) {
 
 // is called when clicked on node
 function populateArticles(node) {
-
+	console.log('in populateArticles');
 	node = node;
 
 	// here should be the query to the server... articlesObject is fetched from example javascript israel-data.js file
@@ -45,8 +44,8 @@ function populateArticles(node) {
 
 	
 	// random # articles are shown -
-	startingIndex = Math.floor(Math.random()*articles.length);
-	// startingIndex = 0;
+	// startingIndex = Math.floor(Math.random()*articles.length);
+	var startingIndex = 0;
 	if (startingIndex == articles.length-1){
 		startingIndex = articles.length-2;
 	}
@@ -76,20 +75,20 @@ function getHeigth(article, heightReference, heightImportance, importanceUnit){
 		return heightReference;
 }
 
+
 // draw dynamically all the articles
 function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 
-	//var articleColor = colorArray[0];
+	// var articleColor = colorArray[i];
 	var articleColor = node.color;
-	
+
 	var currentWidthInLine = 0;
-	var maxWidth = container.clientWidth - 5;
-console.log('------------------------------------------------------');
+	var maxWidth = container.clientWidth - 15;
+	console.log('------------------------------------------------------');
 	console.log('MaxWidth: ' + maxWidth);
 	
 	// draw each article box
 	for (var i = startingArtInd; i < endArtInd; i++)  {
-
 		/// create div with article+i ID
 		var article = document.createElement('div');
 		article.id ='article'+i;	
@@ -123,7 +122,8 @@ console.log('------------------------------------------------------');
 			// console.log('in last element else');
 			article.style.width = articleWidth +"px";
 		}		
-		
+
+			
 		// console.log("after the loop :" + article.style.width);
 		// console.log("-----next Tile");
 		article.style.height = getHeigth(articles[i], heightReference, heightImportance, importanceUnit)  +"px";
@@ -139,9 +139,9 @@ console.log('------------------------------------------------------');
 		articleText.className = "item-content";
 		articleText.innerHTML = '<div class="title">'+  articles[i].title + '</div>' ;
 		$(articleText).append("<div class='previewText'>" + articles[i].previewText.substring(0,100) + "... </br></div>");
-		// $(articleText).append("<div class='timestamp'>" + articles[i].timestamp + "</div>");
+		// $(articleText).append("<div class='timestamp'>"	 + articles[i].timestamp + "</div>");
 		// $(articleText).append("<div class='publisher'> By: " + articles[i].publisher + " --> </div>");
-
+		//document.getElementById('display-date').style.fontSize = '2em';
 		articleText.style.width = article.style.width;
 		articleText.style.height = article.style.height;
 		articleText.style.background = articleColor;
@@ -170,7 +170,6 @@ console.log('------------------------------------------------------');
 
 }
 
-
 // forwards to respective article URL on a click
 function addClickListener(articles, article, i) {	
 	$(article).bind('click', function(event){
@@ -178,3 +177,4 @@ function addClickListener(articles, article, i) {
 		win.focus();
 	});
 }
+

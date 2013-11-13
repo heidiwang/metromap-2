@@ -20,8 +20,9 @@
     font-weight:bolder;
 }
 
-.brand .info-link {
+.main-menu .brand .info-link {
+    margin-left: 15px;
+    text-indent:50px;
     color: #000000;
-    text-align:right;
 }
 
