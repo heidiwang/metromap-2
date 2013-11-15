@@ -2,6 +2,8 @@
 Map: Helpers
 **************************/
 
+var _panelWidth = 2000;
+
 function setLineProperties() {
 	for (var l in lines) {
 		var nodeIDs = lines[l].nodeIDs;
@@ -45,8 +47,11 @@ function sortByDate(nodes) {
 }
 
 function getPanelWidth() {
-	//return $(window).width()*0.85;
-	return 2000;
+	return _panelWidth;
+}
+
+function setPanelWidth(newWidth) {
+	_panelWidth = newWidth;
 }
 
 function getPanelHeight() {
