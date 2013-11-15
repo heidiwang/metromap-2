@@ -2,6 +2,23 @@
 Map: Helpers
 **************************/
 
+function setLineProperties() {
+	for (var l in lines) {
+		var nodeIDs = lines[l].nodeIDs;
+		var nodeData = [];
+		for (var n in nodeIDs) {
+			var node = getNodeByID(nodeIDs[n]);
+			nodeData.push(node);
+		}
+		nodeData = sortByDate(nodeData);
+		var sortedNodeIDs = [];
+		for (var n in nodeData) {
+			sortedNodeIDs.push(nodeData[n].id);
+		}
+		lines[l].nodeIDs = sortedNodeIDs;
+	}
+}
+
 function setNodeProperties() {
 	nodes = sortByDate(nodes);
 	

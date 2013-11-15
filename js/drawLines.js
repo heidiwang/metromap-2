@@ -1,6 +1,8 @@
 function drawLines() {
 	for (var l in lines) {
 		var currentNodeSet = lines[l].nodeIDs;
+		drawLineLabel(lines[l], getNodeByID(currentNodeSet[0]));
+		
 		for (var n = 0; n < currentNodeSet.length - 1; n++) {
 			var startNode = getNodeByID(currentNodeSet[n]);
 			var endNode = getNodeByID(currentNodeSet[n+1]);
@@ -16,11 +18,6 @@ function drawLines() {
 			var dups = getDups(startNode.lineIDs, endNode.lineIDs);
 			if (dups.length > 1) {
 				drawRainbowSeg(startNode, endNode, dups, lineWidth);
-			}
-	
-			// on first node, draw the label for the whole line
-			if (n == 0) {
-				drawLineLabel(startNode, endNode, lines[l].label);
 			}
 		}
 	}
@@ -60,20 +57,22 @@ function drawRainbowSeg(leftNode, rightNode, dups, lineWidth) {
 	}
 }
 
-function drawLineLabel(startNode, endNode, label) {
+function drawLineLabel(line, startNode) {	
 	var lineLabel = new Kinetic.Text({
-		x: startNode.x,
-		y: startNode.y,
-		text: label,
-		fontSize: 10,
+		x: startNode.x + 10,
+		y: startNode.y + 20,
+		width: 300,
+		text: line.label,
+		fontSize: 20,
 		fontFamily: 'Calibri',
-		fill: 'black'
+		align: 'center',
+		fill: colors[line.id]
 	});
 	
-	var slope = (endNode.y - startNode.y)/(endNode.x - startNode.x)
-	var angle = Math.atan(slope)
+// 	var slope = (endNode.y - startNode.y)/(endNode.x - startNode.x)
+// 	var angle = Math.atan(slope)
 	
-	lineLabel.rotate(angle);
+// 	lineLabel.rotate(angle);
 	
 	layer.add(lineLabel);
 }
