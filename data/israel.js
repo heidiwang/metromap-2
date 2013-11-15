@@ -1,7 +1,7 @@
-{"nodes": [
+var data = {"nodes": [
 	{"id": "1", 
 	"label": "gaza palestinians fire united leaders",
-	"time": "2009-01-05",
+	"time": "2014-01-05",
 	"importance": "3",
 	"lineIDs": ["1"]
 	},
@@ -80,31 +80,26 @@
 	{"id": "14",
 	"label": "hillary clinton agency washington american",
 	"time": "2010-02-10",
-	"importance": "4",
+	"importance": "3",
 	"lineIDs": ["2"]
 	},
 	{"id": "15",
 	"label": "move capitalizing projects neighborhoods vice",
 	"time": "2010-03-15",
-	"importance": "5",
+	"importance": "3",
 	"lineIDs": ["3"]
 	},
 	{"id": "16", 
 	"label": "according spokesman claim killed clinton",
 	"time": "2010-03-22",
 	"importance": "2",
-	"lineIDs": ["1"]
+	"lineIDs": ["1", "2", "5"]
 	},
 	{"id": "17",
 	"label": "starting policies gaza abbas obama",
 	"time": "2010-04-25",
-	"importance": "4",
+	"importance": "1",
 	"lineIDs": ["3"]
-	},{"id": "1", 
-	"label": "gaza palestinians fire united leaders",
-	"time": "2009-01-05",
-	"importance": "3",
-	"lineIDs": ["1"]
 	},
 	{"id": "18",
 	"label": "dealing materials conference proposal treaty",
@@ -126,8 +121,8 @@
 	},
 	{"id": "21",
 	"label": "palestinians tries gaza activist turkish",
-	"time": "2010-08-09",
-	"importance": "5",
+	"time": "2010-09-30",
+	"importance": "2",
 	"lineIDs": ["5"]
 	},
 	{"id": "22",
@@ -156,7 +151,7 @@
 	},
 	{"id": "2",
 	"label": "nuclear, iranian, weapons, sanctions, programs",
-	"nodeIDs": ["3", "7", "8", "11", "14", "18", "23"]
+	"nodeIDs": ["3", "7", "8", "11", "14", "16", "18", "23"]
 	},
 	{"id": "3",
 	"label": "obama, diplomat, indirectly, moratorium, neighborhoods",
@@ -168,7 +163,7 @@
 	},
 	{"id": "5",
 	"label": "turkey, flotilla, turkish, nine, boat",
-	"nodeIDs": ["19", "20", "21"]
+	"nodeIDs": ["16", "19", "20", "21"]
 	}
 ]
 }
