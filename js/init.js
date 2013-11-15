@@ -19,6 +19,6 @@ stage = new Kinetic.Stage({
 });
 
 layer = new Kinetic.Layer({width: getPanelWidth(), height: getPanelHeight()});
-setLayout();
 setLineProperties();
 setNodeProperties();
+setLayout();
