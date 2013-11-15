@@ -125,7 +125,7 @@ var data = {"nodes": [
 	},
 	{"id": "21",
 	"label": "palestinians tries gaza activist turkish",
-	"time": "2010-08-09",
+	"time": "2010-09-30",
 	"importance": "2",
 	"lineIDs": ["5"]
 	},
@@ -178,13 +178,14 @@ var lines = data.lines;
 var stage;
 var layer;
 var colors = {"1": "#D50096", "2": "#22C3C3", "3": "#48E470", "4": "#9c6eff", "5": "#FF9900"}; // still need to make this dynamic
+var darkColors = {};
 var currentSelectedNode = 11;
 
 stage = new Kinetic.Stage({
 	container: 'map-container',
-		width: getWindowWidth(),
-		height: 400
+		width: getPanelWidth(),
+		height: getPanelHeight()
 });
 
-layer = new Kinetic.Layer({width: getWindowWidth(), height: 400});
+layer = new Kinetic.Layer({width: getPanelWidth(), height: getPanelHeight()});
 setNodeProperties();

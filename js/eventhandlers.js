@@ -8,11 +8,19 @@ function hoverCursor(object, node) {
 			darkenColor(node);
 			layer.draw();
 		}
+		if (node.importance == 1) {
+			magnify(node);
+			layer.draw();
+		}
 		document.body.style.cursor = 'pointer';
 	});
 	object.on('mouseleave', function() {
 		if (node.id != currentSelectedNode) {
 			lightenColor(node);
+			layer.draw();
+		}
+		if (node.importance == 1) {
+			collapse(node);
 			layer.draw();
 		}
 		document.body.style.cursor = 'default';
@@ -26,6 +34,30 @@ function nodeClick(object, node) {
 		layer.draw();
 		populateArticles(node);
 	});
+}
+
+function magnify(node) {
+	var circleShape = node.circleShape;
+	circleShape.setRadius(23*3);
+	
+	var labelShape = node.labelShape;
+	labelShape.setText(node.label);
+	labelShape.setWidth(23*3*1.5);
+	labelShape.setHeight(23*3*1.5);
+	labelShape.setFontSize(18);
+	labelShape.setAbsolutePosition(node.x - 23*3*.75, node.y - 23*3*.75);
+}
+
+function collapse(node) {
+	var circleShape = node.circleShape;
+	circleShape.setRadius(23);
+	
+	var labelShape = node.labelShape;
+	labelShape.setText("...");
+	labelShape.setWidth(23*1.5);
+	labelShape.setHeight(23*1.5);
+	labelShape.setFontSize(20);
+	labelShape.setAbsolutePosition(node.x - 23*.75, node.y - 23*.75);
 }
 
 function changeSelectedNode(node) {

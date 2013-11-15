@@ -33,12 +33,14 @@ function drawPlainNode(nodeData) {
 		x: nodeData.x,
 		y: nodeData.y
 	});
+	
+	var fontsize = (nodeData.displayText == "...") ? 20 : nodeData.importance*5 + 3;
 
 	var label = new Kinetic.Text({
 		x: nodeData.x - nodeData.radius*.75,
 		y: nodeData.y - nodeData.radius*.75,
 		text: nodeData.displayText,
-		fontSize: nodeData.importance*5 + 3,
+		fontSize: fontsize,
 		fontFamily: 'Calibri',
 		width: nodeData.radius*1.5,
 		height: nodeData.radius*1.5,
@@ -119,8 +121,6 @@ function drawSharedArcs(nodeData) {
 								 size: getArcSize(angle1, angle2)});
 	}
 	
-	console.log(myArcs);
-	
 	// Sort the arcs by size
 	// Then, greedily draw from largest to smallest
 	var mySortedArcs = myArcs.sort(function(a,b){
@@ -129,7 +129,6 @@ function drawSharedArcs(nodeData) {
 
 	for (var a in mySortedArcs){
 		var arc = mySortedArcs[a];
-		console.log(arc);
 		
 		//largest angled arc, draw entire circle
 		if (a == 0){

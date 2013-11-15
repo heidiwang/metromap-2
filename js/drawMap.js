@@ -5,6 +5,7 @@ Map: Kick off the map
 drawMap();
 
 function drawMap() {
+	//initializeColors();
 	drawTime();
 	drawLines();
 	drawNodes();

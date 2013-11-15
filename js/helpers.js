@@ -3,11 +3,16 @@ Map: Helpers
 **************************/
 
 function setNodeProperties() {
+	nodes = sortByDate(nodes);
+	
+	var dateSortedNodes = sortByDate(nodes);
+	
+	var xspacing = getPanelWidth()/(nodes.length);
+	var yspacing = getPanelHeight()/(lines.length);
+	
 	for (var n in nodes) {
-		var xspacing = getWindowWidth()/(nodes.length);
-		var yspacing = 400/lines.length;
 		nodes[n].x = xspacing * n + xspacing/2;
-		nodes[n].y = yspacing * nodes[n].lineIDs[0] + Math.random(); // add a small random variation to prevent perfectly horizontal lines
+		nodes[n].y = yspacing * (nodes[n].lineIDs[0]-1) + yspacing/2 + Math.random(); // add a small random variation to prevent perfectly horizontal lines
 		nodes[n].radius = nodes[n].importance * 23;
 		nodes[n].color = colors[nodes[n].lineIDs[0]];
 		
@@ -27,8 +32,13 @@ function sortByDate(nodes) {
 	return sortedNodes;
 }
 
-function getWindowWidth() {
-	return $(window).width();
+function getPanelWidth() {
+	//return $(window).width()*0.85;
+	return 2000;
+}
+
+function getPanelHeight() {
+	return 400;
 }
 
 function getNodeByID(id) {
@@ -46,4 +56,19 @@ function getLineById(lineId) {
 			return lines[l];
 		}
 	}
+}
+
+function initializeColors() {
+	var colorBank = ["#D50096", "#22C3C3", "#48E470", "#9c6eff", "#FF9900"];
+	var colors = sample_range(colorBank, lines.length);
+}
+
+function sample_range(range, n) {
+  console.log(range);
+  var sample = [];
+  for(var i=0; i<n; i++) {
+    sample.push(range.splice(Math.random()*range.length,1));
+  }
+  console.log(sample);
+  return sample;
 }
