@@ -20,7 +20,7 @@ var data = {"nodes": [
 	{"id": "4", 
 	"label": "egypt united war cross palestinians",
 	"time": "2009-02-23",
-	"importance": "2",
+	"importance": "1",
 	"lineIDs": ["1"]
 	},
 	{"id": "5",
