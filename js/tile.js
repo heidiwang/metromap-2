@@ -29,8 +29,8 @@ function getArticlesObj(node) {
 
 // is called when clicked on node
 function populateArticles(node) {
-	console.log('in populateArticles');
-	node = node;
+	
+	var node = node;
 
 	// here should be the query to the server... articlesObject is fetched from example javascript israel-data.js file
 	var articlesObj = getArticlesObj(node);
@@ -39,6 +39,7 @@ function populateArticles(node) {
 	// remove current articles 
 	while (container.hasChildNodes()) {
 		//console.log("in remov");
+		msnry.remove(container.lastChild);
 		container.removeChild(container.lastChild);
 	}
 
@@ -80,12 +81,11 @@ function getHeigth(article, heightReference, heightImportance, importanceUnit){
 function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 
 	// var articleColor = colorArray[i];
-	var articleColor = node.color;
+	var articleColor = getHighlightedColor(node.color, node);
+	// var articleColor = node.color;
 
 	var currentWidthInLine = 0;
 	var maxWidth = container.clientWidth - 15;
-	console.log('------------------------------------------------------');
-	console.log('MaxWidth: ' + maxWidth);
 	
 	// draw each article box
 	for (var i = startingArtInd; i < endArtInd; i++)  {
@@ -159,10 +159,10 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		articleBackground.style.height = article.style.height;
 		article.appendChild(articleBackground);
 
+		msnry.appended( article );
 		//makes visual,appearing effects
 		msnry.layout();
 
-		msnry.appended( article );
 
 	}
 
@@ -173,8 +173,39 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 // forwards to respective article URL on a click
 function addClickListener(articles, article, i) {	
 	$(article).bind('click', function(event){
+
+		
 		var win=window.open(articles[i].url, '_blank');
 		win.focus();
 	});
 }
+
+function getHighlightedColor(hexColor, node) {
+	var articleColorRGB = hexToRgb(node.color);
+	console.log(articleColorRGB.b);
+	var articleColor = rgbToHex(Math.max(articleColorRGB.r - 50,0),Math.max(articleColorRGB.g - 50,0) , Math.max(articleColorRGB.b - 50,0));
+	return articleColor;
+	// console.log(node.color);
+	// console.log(articleColor);
+	
+}
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
 
