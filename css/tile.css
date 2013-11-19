@@ -9,6 +9,26 @@
   color: #fff
 }
 
+.importance1 {
+  font-size:0.5em;
+
+}
+
+.importance2 {
+  font-size:0.75em;
+}
+
+.importance3 {
+  font-size:1em;
+}
+
+.importance4 {
+  font-size:1.25em;
+}
+.importance5 {
+  font-size:1.5em;
+}
+
 .masonry .item {
   float: left;
 }
