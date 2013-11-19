@@ -80,6 +80,9 @@ function getHeigth(article, heightReference, heightImportance, importanceUnit){
 // draw dynamically all the articles
 function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 
+	// hide info element
+	$('.box #info').hide();
+
 	// var articleColor = colorArray[0];
 	var articleColor =  Util.getHighlightedColor(node.color);
 	// var articleColor = node.color;
