@@ -76,16 +76,15 @@ function getLineById(lineId) {
 }
 
 function initializeColors() {
-	//var colorBank = ["#D50096", "#22C3C3", "#48E470", "#9c6eff", "#FF9900"];
-	//var colors = sample_range(colorBank, lines.length);
+	console.log(lines);
 	var numLines = lines.length;
 	var colorArray = Util.getColorArray(numLines);
   colors = {};
 	
-	i = 0;
+	var i = 0;
 	for (var l in lines) {
 		var lineID = lines[l].id;
-		colors[l] = colorArray[i];
+		colors[lineID] = colorArray[i];
 		i++;
 	}
 }

@@ -73,6 +73,7 @@ function changeSelectedNode(node) {
 function darkenColor(nodeData) {
 	var firstLine = nodeData.lineIDs[0];
 	var circleShape = nodeData.circleShape;
+	console.log(colors);
 	circleShape.setFill(Util.getHighlightedColor(colors[firstLine]));
 }
 
