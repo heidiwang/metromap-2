@@ -2,6 +2,7 @@
 Map: Event handling
 **************************/
 
+
 function hoverCursor(object, node) {
 	object.on('mouseenter', function() {
 		if (node.id != currentSelectedNode) {
@@ -23,7 +24,6 @@ function hoverCursor(object, node) {
 			collapse(node);
 			layer.draw();
 		}
-		document.body.style.cursor = 'default';
 	});
 }
 
@@ -45,7 +45,7 @@ function magnify(node) {
 	labelShape.setWidth(23*3*1.5);
 	labelShape.setHeight(23*3*1.5);
 	labelShape.setFontSize(18);
-	labelShape.setAbsolutePosition(node.x - 23*3*.75, node.y - 23*3*.75);
+	labelShape.setPosition(node.x - 23*3*.75, node.y - 23*3*.75);
 }
 
 function collapse(node) {
@@ -57,7 +57,7 @@ function collapse(node) {
 	labelShape.setWidth(23*1.5);
 	labelShape.setHeight(23*1.5);
 	labelShape.setFontSize(20);
-	labelShape.setAbsolutePosition(node.x - 23*.75, node.y - 23*.75);
+	labelShape.setPosition(node.x - 23*.75, node.y - 23*.75);
 }
 
 function changeSelectedNode(node) {
