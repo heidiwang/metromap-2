@@ -32,7 +32,6 @@ Util.getHighlightedColor = function(color) {
 	var articleColorRGB = hexToRgb(color);
 	var articleColor = rgbToHex(Math.max(articleColorRGB.r - 50,0),Math.max(articleColorRGB.g - 50,0) , Math.max(articleColorRGB.b - 50,0));
 	return articleColor;
-	// console.log(node.color);
 	// console.log(articleColor);
 	
 };

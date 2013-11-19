@@ -3,8 +3,8 @@ var TileLightbox = {};
 
 
 TileLightbox.createLightbox = function(articleObj, divElement){
-	console.log('in createLightBox');
-	console.log(articleObj);
+	// console.log('in createLightBox');
+	// console.log(articleObj);
 
 	//addEventClickListener
 	$(divElement).bind('click', function(event){
@@ -17,7 +17,7 @@ TileLightbox.createLightbox = function(articleObj, divElement){
 
 // build the actual Lightbox dynamically
 function dynamicCreationOfLightbox(articleObj, divElement) {
-
+	
 }
 
 window.TileLightbox = TileLightbox;
