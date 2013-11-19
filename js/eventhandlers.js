@@ -24,6 +24,7 @@ function hoverCursor(object, node) {
 			collapse(node);
 			layer.draw();
 		}
+		document.body.style.cursor = '-webkit-grab';
 	});
 }
 
