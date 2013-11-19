@@ -8,7 +8,7 @@ var articles;
 var container = document.querySelector('.masonry');
 
 //  given data for article tiles
-// var colorArray = getArrayOfColors(5);
+// var colorArray = getColorArray(5);
 var nodeId = 0;
 var widthReference = 200;
 var heightReference = 200;
@@ -80,7 +80,7 @@ function getHeigth(article, heightReference, heightImportance, importanceUnit){
 // draw dynamically all the articles
 function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 
-	// var articleColor = colorArray[i];
+	// var articleColor = colorArray[0];
 	var articleColor = getHighlightedColor(node.color, node);
 	// var articleColor = node.color;
 
@@ -182,7 +182,6 @@ function addClickListener(articles, article, i) {
 
 function getHighlightedColor(hexColor, node) {
 	var articleColorRGB = hexToRgb(node.color);
-	console.log(articleColorRGB.b);
 	var articleColor = rgbToHex(Math.max(articleColorRGB.r - 50,0),Math.max(articleColorRGB.g - 50,0) , Math.max(articleColorRGB.b - 50,0));
 	return articleColor;
 	// console.log(node.color);
@@ -208,4 +207,30 @@ function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
+function getColorArray(nrOfColors) {
+	var result = new Array();
+	var colorArrayOverview = new Array();
+
+	var colorArray =  ["#FF4900", "#FF9200", "#0B61A4", "#00AF64", "#FFFF00"];
+	colorArrayOverview.push(colorArray);
+	
+	var	colorArray2 = ["#FF0000", "#FF7400", "#009999", "#00CC00", "#3914AF"];
+	colorArrayOverview.push(colorArray2);
+ 	
+ 	// // yellow, green, pink, purple
+	var colorArray3 = ["#FFFF00", "#9FEE00", "#CD0074", "#7109AA", "#0A67A3"];
+	colorArrayOverview.push(colorArray3);
+
+	var colorArray4 = ["#3fb8e8", "#e86f3f", "#3f63e8", "#e83f63", "#b8e83f"];
+	colorArrayOverview.push(colorArray4);
+	
+	var colorArrayIndex = Math.floor(Math.random()*colorArrayOverview.length);
+	console.log(colorArrayIndex);
+	for (var i = 0; i < nrOfColors; i++) {
+		result.push(colorArrayOverview[colorArrayIndex][i]);
+	}
+	console.log(result);
+	return result;
+		
+}
 
