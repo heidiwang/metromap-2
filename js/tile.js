@@ -142,7 +142,9 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		/// add text to articleDiv
 		var articleText = document.createElement('div');
 		articleText.className = "item-content";
-		articleText.innerHTML = '<div class="title">'+  articles[i].title + '</div>' ;
+		var importanceClass = "importance"+articles[i].importance;
+		//console.log('<div class="title importance' + articles[i].importance'" >'+  articles[i].title + '</div>');
+		articleText.innerHTML = '<div class="title ' + importanceClass + '" >'+  articles[i].title + '</div>' ;
 		$(articleText).append("<div class='previewText'>" + articles[i].previewText.substring(0,100) + "... </br></div>");
 		// $(articleText).append("<div class='timestamp'>"	 + articles[i].timestamp + "</div>");
 		// $(articleText).append("<div class='publisher'> By: " + articles[i].publisher + " --> </div>");
