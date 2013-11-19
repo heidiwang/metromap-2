@@ -32,3 +32,4 @@ initializeColors();
 setLineProperties();
 setNodeProperties();
 setLayout();
+populateArticles(getNodeByID(currentSelectedNode));
