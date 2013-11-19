@@ -77,7 +77,7 @@ body {
 }
 
 .box{
-	overflow: auto;
+	overflow: hidden;
 	position: relative;
 	width: 92%;
 	height: auto;
