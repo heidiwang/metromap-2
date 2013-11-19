@@ -18,6 +18,9 @@ Util.getColorArray = function(nrOfColors) {
 	var colorArray4 = ["#3fb8e8", "#e86f3f", "#3f63e8", "#e83f63", "#b8e83f"];
 	colorArrayOverview.push(colorArray4);
 	
+	var colorArray5 = ["#D50096", "#22C3C3", "#48E470", "#9c6eff", "#FF9900"];
+	colorArrayOverview.push(colorArray5);
+	
 	var colorArrayIndex = Math.floor(Math.random()*colorArrayOverview.length);
 	console.log(colorArrayIndex);
 	for (var i = 0; i < nrOfColors; i++) {
