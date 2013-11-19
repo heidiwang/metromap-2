@@ -76,16 +76,16 @@ function getLineById(lineId) {
 }
 
 function initializeColors() {
-	var colorBank = ["#D50096", "#22C3C3", "#48E470", "#9c6eff", "#FF9900"];
-	var colors = sample_range(colorBank, lines.length);
-}
-
-function sample_range(range, n) {
-  console.log(range);
-  var sample = [];
-  for(var i=0; i<n; i++) {
-    sample.push(range.splice(Math.random()*range.length,1));
-  }
-  console.log(sample);
-  return sample;
+	//var colorBank = ["#D50096", "#22C3C3", "#48E470", "#9c6eff", "#FF9900"];
+	//var colors = sample_range(colorBank, lines.length);
+	var numLines = lines.length;
+	var colorArray = Util.getColorArray(numLines);
+  colors = {};
+	
+	i = 0;
+	for (var l in lines) {
+		var lineID = lines[l].id;
+		colors[l] = colorArray[i];
+		i++;
+	}
 }

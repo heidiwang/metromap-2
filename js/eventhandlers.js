@@ -72,9 +72,8 @@ function changeSelectedNode(node) {
 
 function darkenColor(nodeData) {
 	var firstLine = nodeData.lineIDs[0];
-	var darkColors = {"1": "#940068", "2": "#188686", "3": "#3db65c", "4": "#694aad", "5": "#ac6700"};
 	var circleShape = nodeData.circleShape;
-	circleShape.setFill(darkColors[firstLine]);
+	circleShape.setFill(Util.getHighlightedColor(colors[firstLine]));
 }
 
 function lightenColor(nodeData) {
