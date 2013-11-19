@@ -32,8 +32,9 @@ Util.getColorArray = function(nrOfColors) {
 };
 
 Util.getHighlightedColor = function(color) {
+	var reduceRGBby = 20;
 	var articleColorRGB = hexToRgb(color);
-	var articleColor = rgbToHex(Math.max(articleColorRGB.r - 50,0),Math.max(articleColorRGB.g - 50,0) , Math.max(articleColorRGB.b - 50,0));
+	var articleColor = rgbToHex(Math.max(articleColorRGB.r - reduceRGBby,0),Math.max(articleColorRGB.g - reduceRGBby,0) , Math.max(articleColorRGB.b - reduceRGBby,0));
 	return articleColor;
 	// console.log(articleColor);
 	
