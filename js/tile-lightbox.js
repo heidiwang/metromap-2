@@ -5,10 +5,8 @@ var TileLightbox = {};
 TileLightbox.createLightbox = function(articleObj, divElement){
     $('.fancybox').fancybox();
 
-    var widthOfLightbox = 0.7*$(window).width();
-
     $(".fancybox").fancybox({
-		'width'		:	widthOfLightbox
+		'width'		:	'70%'
 		
 	});
 
