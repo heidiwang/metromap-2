@@ -47,6 +47,8 @@
 
 /* item-content is visible, and transitions size */
 .item-content {
+  padding: 30px;
+  display:table;
   position:relative;
   width: 60px;
   height: 60px;
@@ -61,9 +63,18 @@
 }
 
 .item-content .title{
-padding: 0.5em;
-text-align:center;
+  display: table-cell; 
+  vertical-align: middle; 
+  text-align: center; 
 } 
+
+.item-content .timestamp{
+  font-size: 0.5em;
+} 
+
+.item-content .publisher{
+  font-size: 0.5em;
+}
 
 .item-content .previewText {
   padding: 0.5em;

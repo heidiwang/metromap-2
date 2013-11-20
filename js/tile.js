@@ -134,21 +134,14 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		// article.style.height = "250px";
 		container.appendChild( article );
 
-		// addClickListener(articles, article, i);
-
-		// gives the article as js Object and the articleDiv element
-		TileLightbox.createLightbox(articles[i], article);
-
 		/// add text to articleDiv
 		var articleText = document.createElement('div');
 		articleText.className = "item-content";
 		var importanceClass = "importance"+articles[i].importance;
-		//console.log('<div class="title importance' + articles[i].importance'" >'+  articles[i].title + '</div>');
-		articleText.innerHTML = '<div class="title ' + importanceClass + '" >'+  articles[i].title + '</div>' ;
-		$(articleText).append("<div class='previewText'>" + articles[i].previewText.substring(0,100) + "... </br></div>");
+		articleText.innerHTML = '<div class="title ' + importanceClass + '" >'+  articles[i].title +  '<div class="publisher timestamp">' + articles[i].publisher + ', ' + articles[i].timestamp + '</div></div>' ; 
+		// $(articleText).append("<div class='previewText'>" + articles[i].previewText.substring(0,100) + "... </br></div>");
 		// $(articleText).append("<div class='timestamp'>"	 + articles[i].timestamp + "</div>");
-		// $(articleText).append("<div class='publisher'> By: " + articles[i].publisher + " --> </div>");
-		//document.getElementById('display-date').style.fontSize = '2em';
+		// $(articleText).append("<div class='publisher'> By: " + articles[i].publisher + "</div>");
 		articleText.style.width = article.style.width;
 		articleText.style.height = article.style.height;
 		articleText.style.background = articleColor;
@@ -166,6 +159,10 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		articleBackground.style.height = article.style.height;
 		article.appendChild(articleBackground);
 
+		// gives the article as js Object and the articleDiv element
+		TileLightbox.createLightbox(articles[i], articleBackground);
+
+
 		msnry.appended( article );
 		//makes visual,appearing effects
 		msnry.layout();
@@ -174,13 +171,4 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 	}
 }
 
-// forwards to respective article URL on a click
-function addClickListener(articles, article, i) {	
-	$(article).bind('click', function(event){
-
-		
-		var win=window.open(articles[i].url, '_blank');
-		win.focus();
-	});
-}
 

@@ -22,11 +22,9 @@ Util.getColorArray = function(nrOfColors) {
 	colorArrayOverview.push(colorArray5);
 	
 	var colorArrayIndex = Math.floor(Math.random()*colorArrayOverview.length);
-	console.log(colorArrayIndex);
 	for (var i = 0; i < nrOfColors; i++) {
 		result.push(colorArrayOverview[colorArrayIndex][i]);
 	}
-	console.log(result);
 	return result;
 		
 };
@@ -36,8 +34,6 @@ Util.getHighlightedColor = function(color) {
 	var articleColorRGB = hexToRgb(color);
 	var articleColor = rgbToHex(Math.max(articleColorRGB.r - reduceRGBby,0),Math.max(articleColorRGB.g - reduceRGBby,0) , Math.max(articleColorRGB.b - reduceRGBby,0));
 	return articleColor;
-	// console.log(articleColor);
-	
 };
 
 function hexToRgb(hex) {

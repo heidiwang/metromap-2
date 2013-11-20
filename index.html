@@ -16,8 +16,8 @@
       <link rel="stylesheet" type="text/css" href="css/main-style.css">
       <link rel="stylesheet" type="text/css" href="css/tile.css">
       <link rel="stylesheet" type="text/css" href="css/navigation-bar.css">
-      <link href="css/lightbox.css" rel="stylesheet" />
- 
+      <script src="js/jquery-1.9.0.min.js"></script>
+      <link rel="stylesheet" href="css/fancybox/jquery.fancybox.css" type="text/css" media="screen" />       
       <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
     </head>
@@ -29,17 +29,16 @@
         <div class='brand'>
          <span class='logo'>Metromaps</span>
          <span> <a href="info.html" class='info-link'> more info </a> </span>
-        </div>
-      </div>
-      <!-- /navigation bar -->
+       </div>
+     </div>
+     <!-- /navigation bar -->
 
-      <a href="img/old_map.png" data-lightbox="image-1" title="Old MetroMap">Test Light box</a>
 
-      <div class='box'>
+     <div class='box'>
       <div id="map-container">
       </div>
     </div>
-      
+    
 
 <!-- <div>
   <a href='#' id='addTileButton' class="demo-pricing demo-pricing-1"> Simulate click on node </a> 
@@ -50,9 +49,9 @@
 <!-- add Article Previews-->
 <div class='box'>
 
-<span id="info"> Info: For a preview of different articles click on a node </span>
-<div class="masonry" id="container">
-</div>
+  <span id="info"> Info: For a preview of different articles click on a node </span>
+  <div class="masonry" id="container">
+  </div>
 
 </div>
 
@@ -62,23 +61,20 @@
     <script src="js/util.js" type="text/javascript"></script>
 
     <script src="js/jquery-1.9.0.min.js"></script>
-		<script src="js/masonry.pkgd.min.js"></script>
-		<script src="js/tile.js" type="text/javascript"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
     <script src="js/tile-lightbox.js" type="text/javascript"></script>
-		<script src="data/israel-articles.js" type="text/javascript"></script>
-		<script src="data/israel.js" type="text/javascript"></script>
+    <script src="js/tile.js" type="text/javascript"></script>
+    <script src="data/israel-articles.js" type="text/javascript"></script>
+    <script src="data/israel.js" type="text/javascript"></script>
     <!--<script src="js/kinetic-v4.7.2.min.js"></script>-->
     <script src="js/kinetic.js"></script>
-		<script src="js/layout.js"></script>
-		<script src="js/helpers.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/helpers.js"></script>
     <script src="js/init.js"></script>
     <script src="js/eventhandlers.js"></script>
     <script src="js/drawNodes.js"></script>
     <script src="js/drawLines.js"></script>
     <script src="js/drawMap.js"></script>
 
-    <!-- lightbox  scripts -->
-    <script src="js/lightbox-2.6.min.js"></script>
-
-  </body>
-  </html>
+    </html>

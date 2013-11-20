@@ -1,24 +1,21 @@
 (function(window, document, undefined) {
 var TileLightbox = {};
 
-
+// wrap a <a> around divElement 
 TileLightbox.createLightbox = function(articleObj, divElement){
-	// console.log('in createLightBox');
-	// console.log(articleObj);
+    $('.fancybox').fancybox();
 
-	//addEventClickListener
-	$(divElement).bind('click', function(event){
+    var widthOfLightbox = 0.7*$(window).width();
 
-		dynamicCreationOfLightbox(articleObj, divElement);
-		var win=window.open(articleObj.url, '_blank');
-		win.focus();
+    $(".fancybox").fancybox({
+		'width'		:	widthOfLightbox
+		
 	});
-};
 
-// build the actual Lightbox dynamically
-function dynamicCreationOfLightbox(articleObj, divElement) {
-	
-}
+	var a = '<a class="fancybox fancybox.iframe" href="'+articleObj.url +'"></a>';
+	$divElement = $(divElement);
+	$divElement.wrap(a);
+	};
 
 window.TileLightbox = TileLightbox;
 })(this, this.document);
