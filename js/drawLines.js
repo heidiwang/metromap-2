@@ -9,7 +9,7 @@ function drawLines() {
 			
 			var dups = getDups(startNode.lineIDs, endNode.lineIDs);
 			if (dups.length > 1) {
-				drawRainbowSeg(lines[l], startNode, endNode, dups, lineWidth);
+				drawRainbowSeg(startNode, endNode, dups, lineWidth);
 			}
 			else {
 				var segment = new Kinetic.Line({
@@ -17,16 +17,13 @@ function drawLines() {
 					stroke: colors[lines[l].id],
 					strokeWidth: lineWidth
 				});
-			
-				if (n == 0 ) { lines[l].lineSegments = [segment]; }
-				else {(lines[l].lineSegments).push(segment); }
 				layer.add(segment);
 			}
 		}
 	}
 }
 
-function drawRainbowSeg(line, leftNode, rightNode, dups, lineWidth) {
+function drawRainbowSeg(leftNode, rightNode, dups, lineWidth) {
 	// Get info on this segment
 	// Also, calculate width of each seg in rainbow -- depends on how many need to share
 	var leftNodePoint = {x: leftNode.x, y: leftNode.y};
@@ -50,10 +47,7 @@ function drawRainbowSeg(line, leftNode, rightNode, dups, lineWidth) {
 			strokeWidth: width,
 			lineCap: 'round',
 			lineJoin: 'round'
-		});
-		if (line.lineSegments == null) { line.lineSegments = [lineSegment]; }
-		else {(line.lineSegments).push(lineSegment); }
-		
+		});		
 		layer.add(lineSegment);
 		layer.draw();
 		
@@ -146,6 +140,17 @@ function drawLineLabel(line, firstNode, secondNode) {
 	
  	tab.rotate(angle);
  	lineLabel.rotate(angle);
+ 	
+ 	tab.on('mouseenter', function() {
+		tab.moveToTop();
+		lineLabel.moveToTop();
+		layer.draw();
+	});
+	lineLabel.on('mouseenter', function() {
+		tab.moveToTop();
+		lineLabel.moveToTop();
+		layer.draw();
+	});
 	
 	layer.add(tab);
 	layer.add(lineLabel);

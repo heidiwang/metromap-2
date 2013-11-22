@@ -52,19 +52,7 @@ function nodeHover(object, node) {
 			collapse(node);
 		}
 		document.body.style.cursor = '-webkit-grab';
-		nodeLabel.moveToBottom();
-		nodeCircle.moveToBottom();
-		
-		var lineIDs = node.lineIDs;
-		for (var l in lineIDs) {
-			var segments = getLineById(lineIDs[l]).lineSegments;
-			for (var s in segments) {
-				segments[s].moveToBottom();
-			}
-		}
-		
 		layer.draw();
-		
 	});
 }
 
