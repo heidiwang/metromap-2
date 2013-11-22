@@ -9,6 +9,7 @@ function drawMap() {
 	drawTime();
 	drawLines();
 	drawNodes();
+	drawLineLabels();
 	stage.add(layer);
 }
 

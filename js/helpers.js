@@ -76,7 +76,6 @@ function getLineById(lineId) {
 }
 
 function initializeColors() {
-	console.log(lines);
 	var numLines = lines.length;
 	var colorArray = Util.getColorArray(numLines);
   colors = {};

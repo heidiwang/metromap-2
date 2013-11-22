@@ -28,7 +28,6 @@ function setYPos() {
 	else {
 		var optimalOrdering = lineIds;
 	}
-	console.log(optimalOrdering);
 	var spacing = getPanelHeight()/(lines.length + 1);
 	var currentPos = getPanelHeight()/(lines.length + 1);
 	var lineYs = {};

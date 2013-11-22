@@ -2,29 +2,69 @@
 Map: Event handling
 **************************/
 
+function stagePan(object) {
+	object.on('mouseover', function() {
+		document.body.style.cursor = '-webkit-grab';
+	});
+	object.on('dragmove', function() {
+		//only allow horizontal scrolling
+		object.setY(0);
+		
+		// constrain left and right panning
+		if (object.getX() > 0) {
+			object.setX(0);
+		}
+		var offset = (-1) * (getPanelWidth() - $('#map-container').width());
+		if (object.getX() < offset) {
+			object.setX(offset);
+		}
+		
+		object.draw();
+	});
+}
 
-function hoverCursor(object, node) {
+function nodeHover(object, node) {
+	var nodeLabel = node.labelShape;
+	var nodeCircle = node.circleShape;
+	
 	object.on('mouseenter', function() {
+		// highlight color
 		if (node.id != currentSelectedNode) {
 			darkenColor(node);
-			layer.draw();
 		}
+		// magnify small nodes
 		if (node.importance == 1) {
 			magnify(node);
-			layer.draw();
 		}
+		// change cursor to pointer
 		document.body.style.cursor = 'pointer';
+		// bring to front
+		nodeCircle.moveToTop();
+		nodeLabel.moveToTop();
+		
+		layer.draw();
 	});
 	object.on('mouseleave', function() {
 		if (node.id != currentSelectedNode) {
 			lightenColor(node);
-			layer.draw();
 		}
 		if (node.importance == 1) {
 			collapse(node);
-			layer.draw();
 		}
 		document.body.style.cursor = '-webkit-grab';
+		nodeLabel.moveToBottom();
+		nodeCircle.moveToBottom();
+		
+		var lineIDs = node.lineIDs;
+		for (var l in lineIDs) {
+			var segments = getLineById(lineIDs[l]).lineSegments;
+			for (var s in segments) {
+				segments[s].moveToBottom();
+			}
+		}
+		
+		layer.draw();
+		
 	});
 }
 
@@ -74,7 +114,6 @@ function changeSelectedNode(node) {
 function darkenColor(nodeData) {
 	var firstLine = nodeData.lineIDs[0];
 	var circleShape = nodeData.circleShape;
-	console.log(colors);
 	circleShape.setFill(Util.getHighlightedColor(colors[firstLine]));
 }
 

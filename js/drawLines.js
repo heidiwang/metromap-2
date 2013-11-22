@@ -1,29 +1,32 @@
 function drawLines() {
 	for (var l in lines) {
 		var currentNodeSet = lines[l].nodeIDs;
-		drawLineLabel(lines[l], getNodeByID(currentNodeSet[0]));
 		
 		for (var n = 0; n < currentNodeSet.length - 1; n++) {
 			var startNode = getNodeByID(currentNodeSet[n]);
 			var endNode = getNodeByID(currentNodeSet[n+1]);
 			var lineWidth = 30;
 			
-			var segment = new Kinetic.Line({
-				points: [startNode.x, startNode.y, endNode.x, endNode.y],
-				stroke: colors[lines[l].id],
-				strokeWidth: lineWidth
-			});
-			layer.add(segment);
-			
 			var dups = getDups(startNode.lineIDs, endNode.lineIDs);
 			if (dups.length > 1) {
-				drawRainbowSeg(startNode, endNode, dups, lineWidth);
+				drawRainbowSeg(lines[l], startNode, endNode, dups, lineWidth);
+			}
+			else {
+				var segment = new Kinetic.Line({
+					points: [startNode.x, startNode.y, endNode.x, endNode.y],
+					stroke: colors[lines[l].id],
+					strokeWidth: lineWidth
+				});
+			
+				if (n == 0 ) { lines[l].lineSegments = [segment]; }
+				else {(lines[l].lineSegments).push(segment); }
+				layer.add(segment);
 			}
 		}
 	}
 }
 
-function drawRainbowSeg(leftNode, rightNode, dups, lineWidth) {
+function drawRainbowSeg(line, leftNode, rightNode, dups, lineWidth) {
 	// Get info on this segment
 	// Also, calculate width of each seg in rainbow -- depends on how many need to share
 	var leftNodePoint = {x: leftNode.x, y: leftNode.y};
@@ -48,6 +51,8 @@ function drawRainbowSeg(leftNode, rightNode, dups, lineWidth) {
 			lineCap: 'round',
 			lineJoin: 'round'
 		});
+		if (line.lineSegments == null) { line.lineSegments = [lineSegment]; }
+		else {(line.lineSegments).push(lineSegment); }
 		
 		layer.add(lineSegment);
 		layer.draw();
@@ -55,26 +60,6 @@ function drawRainbowSeg(leftNode, rightNode, dups, lineWidth) {
 		currentPointLeft = offsetPoint (currentPointLeft, width, perpSlope, false);
 		currentPointRight = offsetPoint (currentPointRight, width, perpSlope, false);
 	}
-}
-
-function drawLineLabel(line, startNode) {	
-	var lineLabel = new Kinetic.Text({
-		x: startNode.x + 10,
-		y: startNode.y + 20,
-		width: 300,
-		text: line.label,
-		fontSize: 20,
-		fontFamily: 'Calibri',
-		align: 'center',
-		fill: colors[line.id]
-	});
-	
-// 	var slope = (endNode.y - startNode.y)/(endNode.x - startNode.x)
-// 	var angle = Math.atan(slope)
-	
-// 	lineLabel.rotate(angle);
-	
-	layer.add(lineLabel);
 }
 
 // Helper function for drawRainbowLineSegment 
@@ -113,4 +98,56 @@ function offsetPoint (originalPoint, distance, slope, down) {
 		}
 		return {x: originalPoint.x + xOffset, y: originalPoint.y + yOffset};
 	}
+}
+
+
+
+
+function drawLineLabels() {
+	for (var l in lines) {
+		var currentNodeSet = lines[l].nodeIDs;
+		drawLineLabel(lines[l], 
+									getNodeByID(currentNodeSet[0]), 
+									getNodeByID(currentNodeSet[1]));
+	}
+}
+
+function drawLineLabel(line, firstNode, secondNode) {	
+
+	var labelWidth = (secondNode.x - firstNode.x - firstNode.radius - secondNode.radius);
+	labelWidth = Math.min(labelWidth, 200);
+	
+	var lineLabel = new Kinetic.Text({
+		x: firstNode.x + firstNode.radius,
+		y: firstNode.y + 16,
+		width: labelWidth,
+		text: line.label,
+		fontSize: 15,
+		fontFamily: 'Calibri',
+		align: 'center',
+		fill: colors[line.id]
+	});
+	
+	var tab = new Kinetic.Rect({
+		x: firstNode.x + firstNode.radius,
+		y: firstNode.y + 16,
+		fill: '#f9f9f9',
+		width: labelWidth,
+		height: lineLabel.getHeight() + 5,
+		shadowColor: 'black',
+		shadowBlur: 10,
+		shadowOffset: [5, 5],
+		shadowOpacity: 0.2,
+		cornerRadius: 5
+	});
+	
+ 	var slope = (secondNode.y - firstNode.y)/(secondNode.x - firstNode.x)
+ 	var angle = Math.atan(slope)
+	
+ 	tab.rotate(angle);
+ 	lineLabel.rotate(angle);
+	
+	layer.add(tab);
+	layer.add(lineLabel);
+	layer.add(lineLabel);
 }
