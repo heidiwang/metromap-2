@@ -2,6 +2,26 @@
 Map: Event handling
 **************************/
 
+function stagePan(object) {
+	object.on('mouseover', function() {
+		document.body.style.cursor = '-webkit-grab';
+	});
+	object.on('dragmove', function() {
+		//only allow horizontal scrolling
+		object.setY(0);
+		
+		// constrain left and right panning
+		if (object.getX() > 0) {
+			object.setX(0);
+		}
+		var offset = (-1) * (getPanelWidth() - $('#map-container').width());
+		if (object.getX() < offset) {
+			object.setX(offset);
+		}
+		
+		object.draw();
+	});
+}
 
 function hoverCursor(object, node) {
 	object.on('mouseenter', function() {

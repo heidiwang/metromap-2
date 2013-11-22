@@ -18,14 +18,7 @@ stage = new Kinetic.Stage({
 		draggable: true
 });
 
-stage.on('mouseover', function() {
-	document.body.style.cursor = '-webkit-grab';
-});
-
-stage.on('dragmove', function() {
-	stage.setY(0);
-	stage.draw();
-});
+stagePan(stage);
 
 layer = new Kinetic.Layer({width: getPanelWidth(), height: getPanelHeight()});
 initializeColors();
