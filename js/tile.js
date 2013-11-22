@@ -90,18 +90,28 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 	var currentWidthInLine = 0;
 	var maxWidth = container.clientWidth - 15;
 	
+	var inRow = 1;
+	var maxNrOfRows=2;
+
 	// draw each article box
 	for (var i = startingArtInd; i < endArtInd; i++)  {
 		/// create div with article+i ID
 		var article = document.createElement('div');
+
+		//only show a certain Nr of rows (and onlys shows complete rows)
+		if (inRow<=maxNrOfRows) {
+		container.appendChild( article );
+		}
+		else {
+			//leave for loop
+			break;
+		}
 		article.id ='article'+i;	
 		article.className = "item";
 		
 
 		var articleWidth = getWidth(articles[i], widthReference, importanceUnit)
-		// console.log('article width: ' + articleWidth);
 		currentWidthInLine += articleWidth;
-		// console.log("currentWidthInLine: " + currentWidthInLine);
 
 		// get the right width of each element: the last item in the row gets expanded to the maxSize of the container
 		// if not last item
@@ -110,6 +120,7 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 			// if last item in row
 			if (nextArticleWidth + currentWidthInLine > maxWidth) {
 				article.style.width = articleWidth + (maxWidth - currentWidthInLine) +"px";
+				inRow++;
 				// console.log("in last item , next ArticleWIdth;" + nextArticleWidth );
 				// console.log("in last item ;" + article.style.width );
 				// console.log('currentWidthInLine:' + currentWidthInLine);
@@ -132,8 +143,8 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		article.style.height = getHeigth(articles[i], heightReference, heightImportance, importanceUnit)  +"px";
 		// article.style.width = "250px";
 		// article.style.height = "250px";
-		container.appendChild( article );
 
+		
 		/// add text to articleDiv
 		var articleText = document.createElement('div');
 		articleText.className = "item-content";

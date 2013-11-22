@@ -30,10 +30,10 @@
 		},
 
 		{"id": 4,
-		"title": "Israel knows water technology, and it wants to cash in",
+		"title": "In London befreite Frauen: Ein Leben lang in Gefangenschaft",
 		"timestamp": "2010-08-09",
 		"importance": "2",
-		"url": "http://www.washingtonpost.com/rf/image_606w/2010-2019/WashingtonPost/2013/10/23/Others/Images/2013-10-23/RTR2DYT11382560512.jpg",
+		"url": "http://www.spiegel.de/panorama/justiz/sklaverei-verdacht-in-london-drei-frauen-nach-30-jahren-befreit-a-935009.html",
 		"publisher": "Washington Post",
 		"image": "http://graphics8.nytimes.com/images/2013/03/12/world/middleeast/12lede_gaza/12lede_gaza-blog480.jpg",
 		"previewText": "TEL AVIV — The Israeli water industry took over the convention center here this week to show the world its bacterial sewage scrubbers and computerized shower heads, its low-flow nipples to grow high-yield tomatoes, and its early-warning mathematical algorithms to detect dribbles, leaks and bursts."
