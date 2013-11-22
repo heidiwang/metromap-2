@@ -52,8 +52,8 @@ function drawPlainNode(nodeData) {
 	nodeData.labelShape = label;
 
 	// Add event handlers
-	hoverCursor(node, nodeData);
-	hoverCursor(label, nodeData);
+	nodeHover(node, nodeData);
+	nodeHover(label, nodeData);
 	nodeClick(node, nodeData);
 	nodeClick(label, nodeData);
 
@@ -64,7 +64,7 @@ function drawPlainNode(nodeData) {
 function drawSharedArc(nodeData) {
 	var color = colors[(nodeData.lineIDs)[1]]
 	var node = new Kinetic.Circle({
-		radius: nodeData.radius + 2,
+		radius: nodeData.radius + 5,
 		stroke: color,
 		x: nodeData.x,
 		y: nodeData.y,
