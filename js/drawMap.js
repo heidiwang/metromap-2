@@ -14,8 +14,8 @@ function drawMap() {
 
 function drawTime() {
 	var dateSortedNodes = sortByDate(nodes);
-	var onethird_index = dateSortedNodes.length / 3;
-	var twothird_index = dateSortedNodes.length * 2 / 3;
+	var onethird_index = Math.floor(dateSortedNodes.length / 3);
+	var twothird_index = Math.floor(dateSortedNodes.length * 2 / 3);
 	var onethird_date = dateSortedNodes[onethird_index].time;
 	var twothird_date = dateSortedNodes[twothird_index].time;
 	var onethird_xpos = dateSortedNodes[onethird_index].x;
