@@ -38,8 +38,8 @@ function getArticlesObj(node, articles) {
 // is called when clicked on node
 function populateArticles(node) {
 	var node = node;
-	var articlesObj = getArticlesObj(node, finalJson.articles);
-	articles = getArticlesObj(node, finalJson.articles);
+	var articlesObj = getArticlesObj(node, currentData.articles);
+	articles = getArticlesObj(node, currentData.articles);
 
 
 	// console.log("old articles: ");

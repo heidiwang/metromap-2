@@ -1,5 +1,6 @@
 function updateJSON(newData) {
 
+	currentData = newData;
 	nodes = [];
 	lines = [];
 	currentSelectedNode = null;

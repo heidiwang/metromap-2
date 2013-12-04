@@ -19,6 +19,7 @@ addEventHandlersToButton();
 var stage;
 var layer;
 var colors;
+var currentData;
 
 var nodes = [];
 var lines = [];
