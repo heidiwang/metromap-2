@@ -2,6 +2,30 @@
 Map: Event handling
 **************************/
 
+function addEventHandlersToButton(){
+	$("#example1-btn").on('click', function(event){
+		data = finalJson;
+		initialize();
+	});
+	$("#example2-btn").on('click', function(event){
+		data = finalJson;
+		initialize();
+	});
+	$("#example3-btn").on('click', function(event){
+		data = finalJson;
+		initialize();
+	});
+	$("#example4-btn").on('click', function(event){
+		data = finalJson;
+		initialize();
+	});
+	$("#example5-btn").on('click', function(event){
+		data = finalJson;
+		initialize();
+	});
+
+}
+
 function stagePan(object) {
 	object.on('mouseover', function() {
 		document.body.style.cursor = '-webkit-grab';

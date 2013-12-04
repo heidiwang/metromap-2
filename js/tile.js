@@ -43,7 +43,7 @@ function populateArticles(node) {
 	var articlesObj = getArticlesObj(node, finalJson.articles);
 	articles = getArticlesObj(node, finalJson.articles);
 
-	
+
 	// console.log("old articles: ");
 	// console.log(articles);
 
@@ -97,6 +97,10 @@ function getHeigth(article, heightReference, heightImportance, importanceUnit){
 		return heightReference;
 }
 
+function generateRandomImportance(){
+	return Math.floor(Math.random()*6);
+
+}
 
 // draw dynamically all the articles
 function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
@@ -116,6 +120,10 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 
 	// draw each article box
 	for (var i = startingArtInd; i < endArtInd; i++)  {
+
+		article.importance = generateRandomImportance();
+
+
 		/// create div with article+i ID
 		var article = document.createElement('div');
 
@@ -198,7 +206,6 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		msnry.appended( article );
 		//makes visual,appearing effects
 		msnry.layout();
-
 
 	}
 }

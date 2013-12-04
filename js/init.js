@@ -7,33 +7,41 @@ var searchQuery = "tennis";
 var dateString = "W06142013";
 var url = serverURL + "/" + searchQuery + "/" + dateString;
 
-var data;
-$.getJSON( url, function( data ) {
-  console.log(data);
-});
+//eventhandlers.js
+addEventHandlersToButton();
+
+initialize();
 
 
-var nodes = data.nodes;
-var lines = data.lines;
+function initialize() {
+	$.getJSON( url, function( data ) {
+	  console.log(data);
+	});
 
-// Global variables
-var stage;
-var layer;
-var colors;
-var currentSelectedNode = 11;
+	var nodes = data.nodes;
+	var lines = data.lines;
+	// console.log(data);
 
-stage = new Kinetic.Stage({
-	container: 'map-container',
-		width: getPanelWidth(),
-		height: getPanelHeight(),
-		draggable: true
-});
+	// Global variables
+	var stage;
+	var layer;
+	var colors;
+	var currentSelectedNode = 11;
 
-stagePan(stage);
+	stage = new Kinetic.Stage({
+		container: 'map-container',
+			width: getPanelWidth(),
+			height: getPanelHeight(),
+			draggable: true
+	});
 
-layer = new Kinetic.Layer({width: getPanelWidth(), height: getPanelHeight()});
-initializeColors();
-setLineProperties();
-setNodeProperties();
-setLayout();
-populateArticles(getNodeByID(currentSelectedNode));
+	stagePan(stage);
+
+	layer = new Kinetic.Layer({width: getPanelWidth(), height: getPanelHeight()});
+	initializeColors();
+	setLineProperties();
+	setNodeProperties();
+	setLayout();
+	populateArticles(getNodeByID(currentSelectedNode));
+
+}
