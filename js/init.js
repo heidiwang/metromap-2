@@ -13,8 +13,6 @@ $.getJSON( url, function( data ) {
 });
 
 
-
-
 var nodes = data.nodes;
 var lines = data.lines;
 

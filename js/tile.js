@@ -23,7 +23,13 @@ var msnry = new Masonry( container, {
 
 
 // articlesObject should be fetched from server in the future and not from example javascript israel-data.js file
-function getArticlesObj(node) {
+function getArticlesObj(node, articles) {
+
+	console.log(node.id);
+	for (key in articles) {
+		var article = articles[key];
+		console.log(articles[key]);
+    }
 	return articlesObject;
 }
 
@@ -31,10 +37,22 @@ function getArticlesObj(node) {
 function populateArticles(node) {
 	
 	var node = node;
+	// articlesObj = finalJson.articles;
+	// articles = finalJson.articles;
 
 	// here should be the query to the server... articlesObject is fetched from example javascript israel-data.js file
-	var articlesObj = getArticlesObj(node);
+	var articlesObj = getArticlesObj(node, finalJson.articles);
 	articles = articlesObj.articles;
+	
+	console.log("old articles: ");
+	console.log(articles);
+
+
+	console.log("new articles: ");
+	console.log(finalJson);
+	console.log(finalJson.articles);
+
+	articles = finalJson.articles;
 
 	// remove current articles 
 	while (container.hasChildNodes()) {
@@ -50,6 +68,12 @@ function populateArticles(node) {
 	if (startingIndex == articles.length-1){
 		startingIndex = articles.length-2;
 	}
+
+	
+
+	console.log(finalJson.length);
+	console.log(startingIndex);
+	console.log(articles.length);
 	drawArticles(startingIndex, articles.length-1, articles, msnry, node);		
 
 	
@@ -91,7 +115,7 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 	var maxWidth = container.clientWidth - 15;
 	
 	var inRow = 1;
-	var maxNrOfRows=2;
+	var maxNrOfRows = 2;
 
 	// draw each article box
 	for (var i = startingArtInd; i < endArtInd; i++)  {
