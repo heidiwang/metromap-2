@@ -5,20 +5,20 @@ Util.getColorArray = function(nrOfColors) {
 	var result = new Array();
 	var colorArrayOverview = new Array();
 
-	var colorArray =  ["#FF4900", "#FF9200", "#0B61A4", "#00AF64", "#ffde00"];
+	var colorArray =  ["#FF4900", "#FF9200", "#0B61A4", "#00AF64", "#ffde00", "#ffde00", "#ffde00", "#ffde00", "#ffde00"];
 	colorArrayOverview.push(colorArray);
 	
-	var	colorArray2 = ["#00efec", "#FF7400", "#009999", "#00CC00", "#3914AF"];
+	var	colorArray2 = ["#00efec", "#FF7400", "#009999", "#00CC00", "#3914AF", "#ffde00", "#ffde00", "#ffde00", "#ffde00"];
 	colorArrayOverview.push(colorArray2);
  	
  	// // cyan, green, pink, purple
-	var colorArray3 = ["#00efec", "#9FEE00", "#CD0074", "#7109AA", "#0A67A3"];
+	var colorArray3 = ["#00efec", "#9FEE00", "#CD0074", "#7109AA", "#0A67A3", "#ffde00", "#ffde00", "#ffde00", "#ffde00"];
 	colorArrayOverview.push(colorArray3);
 
-	var colorArray4 = ["#3fb8e8", "#e86f3f", "#3f63e8", "#e83f63", "#b8e83f"];
+	var colorArray4 = ["#3fb8e8", "#e86f3f", "#3f63e8", "#e83f63", "#b8e83f", "#ffde00", "#ffde00", "#ffde00", "#ffde00"];
 	colorArrayOverview.push(colorArray4);
 	
-	var colorArray5 = ["#D50096", "#22C3C3", "#48E470", "#9c6eff", "#FF9900"];
+	var colorArray5 = ["#D50096", "#22C3C3", "#48E470", "#9c6eff", "#FF9900", "#ffde00", "#ffde00", "#ffde00", "#ffde00"];
 	colorArrayOverview.push(colorArray5);
 	
 	var colorArrayIndex = Math.floor(Math.random()*colorArrayOverview.length);
