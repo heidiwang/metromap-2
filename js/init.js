@@ -53,6 +53,8 @@ function initialize() {
 }
 
 function updateJSON(newData) {
+	console.log('in updateJSON');
+	console.log(newData);
 	var nodeObjs = finalJson.nodes;
 	var lineObjs = finalJson.lines;
 
