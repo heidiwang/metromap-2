@@ -19,7 +19,7 @@ addEventHandlersToButton();
 var stage;
 var layer;
 var colors;
-var currentData;
+var currentData = finalJson;
 
 var nodes = [];
 var lines = [];
