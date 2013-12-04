@@ -8,6 +8,7 @@ function drawLines() {
 			var lineWidth = 30;
 			
 			var dups = getDups(startNode.lineIDs, endNode.lineIDs);
+			
 			if (dups.length > 1) {
 				drawRainbowSeg(startNode, endNode, dups, lineWidth);
 			}
@@ -96,7 +97,6 @@ function offsetPoint (originalPoint, distance, slope, down) {
 
 
 
-
 function drawLineLabels() {
 	for (var l in lines) {
 		var currentNodeSet = lines[l].nodeIDs;
@@ -107,7 +107,6 @@ function drawLineLabels() {
 }
 
 function drawLineLabel(line, firstNode, secondNode) {	
-
 	var labelWidth = (secondNode.x - firstNode.x - firstNode.radius - secondNode.radius);
 	labelWidth = Math.min(labelWidth, 200);
 	
@@ -115,7 +114,7 @@ function drawLineLabel(line, firstNode, secondNode) {
 		x: firstNode.x + firstNode.radius,
 		y: firstNode.y + 16,
 		width: labelWidth,
-		text: line.label,
+		text: line.line_label,
 		fontSize: 15,
 		fontFamily: 'Calibri',
 		align: 'center',

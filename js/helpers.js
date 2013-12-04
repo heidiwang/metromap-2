@@ -27,6 +27,7 @@ function setNodeProperties() {
 	var dateSortedNodes = sortByDate(nodes);
 	
 	for (var n in nodes) {
+		nodes[n].importance = Math.floor(Math.random()*3 + 1);
 		nodes[n].radius = nodes[n].importance * 23;
 		nodes[n].color = colors[nodes[n].lineIDs[0]];
 		
