@@ -37,13 +37,11 @@ function getArticlesObj(node, articles) {
 
 // is called when clicked on node
 function populateArticles(node) {
-	
 	var node = node;
-	node.id = "2013060120130601_1";
 	var articlesObj = getArticlesObj(node, finalJson.articles);
 	articles = getArticlesObj(node, finalJson.articles);
 
-	
+
 	// console.log("old articles: ");
 	// console.log(articles);
 
@@ -97,6 +95,10 @@ function getHeigth(article, heightReference, heightImportance, importanceUnit){
 		return heightReference;
 }
 
+function generateRandomImportance(){
+	return Math.floor(1+Math.random()*5);
+
+}
 
 // draw dynamically all the articles
 function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
@@ -116,6 +118,10 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 
 	// draw each article box
 	for (var i = startingArtInd; i < endArtInd; i++)  {
+
+		articles[i].importance = generateRandomImportance();
+
+
 		/// create div with article+i ID
 		var article = document.createElement('div');
 
@@ -183,7 +189,7 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		var articleBackground = document.createElement('div');
 		articleBackground.className = "article-background-pic";
 		// CSS of this div
-		articleBackground.style.backgroundImage = 'url(' + articles[i].image + ')';
+		//articleBackground.style.backgroundImage = 'url(' + articles[i].image + ')';
 		articleBackground.style.top =  articleText.style.top;
 		articleBackground.style.left = articleText.offsetLeft + "px";
 		articleBackground.style.top = articleText.offsetTop + "px";
@@ -198,7 +204,6 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		msnry.appended( article );
 		//makes visual,appearing effects
 		msnry.layout();
-
 
 	}
 }

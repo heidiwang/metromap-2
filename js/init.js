@@ -12,47 +12,63 @@ $.getJSON( url, function( data ) {
   console.log(data);
 });*/
 
-var nodes = [];
-var lines = [];
-var nodeObjs = finalJson.nodes;
-var lineObjs = finalJson.lines;
+addEventHandlersToButton();
 
-for (var n in nodeObjs) {
-	var node = nodeObjs[n];
-	nodes.push(node);
-}
-
-for (var l in lineObjs) {
-	var line = lineObjs[l];
-	lines.push(line);
-}
-
-for (var k in nodeObjs) {
-	break;
-}
-var currentSelectedNode = k;
 
 // Global variables
 var stage;
 var layer;
 var colors;
 
-stage = new Kinetic.Stage({
-	container: 'map-container',
-		width: getPanelWidth(),
-		height: getPanelHeight(),
-		draggable: true
-});
+var nodes = [];
+var lines = [];
+var currentSelectedNode;
+updateJSON(finalJson);
 
-stagePan(stage);
+initialize();
 
-layer = new Kinetic.Layer({width: getPanelWidth(), height: getPanelHeight()});
-initializeColors();
-setLineProperties();
-setNodeProperties();
-setLayout();
-populateArticles(getNodeByID(currentSelectedNode));
 
-function populateArticles(node) {
-	console.log("populate articles for " + node.id);
+function initialize() {
+	/*$.getJSON( url, function( data ) {
+	  console.log(data);
+	});*/
+
+
+	stage = new Kinetic.Stage({
+		container: 'map-container',
+			width: getPanelWidth(),
+			height: getPanelHeight(),
+			draggable: true
+	});
+
+	stagePan(stage);
+
+	layer = new Kinetic.Layer({width: getPanelWidth(), height: getPanelHeight()});
+	initializeColors();
+	setLineProperties();
+	setNodeProperties();
+	setLayout();
+	populateArticles(getNodeByID(currentSelectedNode));
+
+}
+
+function updateJSON(newData) {
+	var nodeObjs = finalJson.nodes;
+	var lineObjs = finalJson.lines;
+
+	for (var n in nodeObjs) {
+		var node = nodeObjs[n];
+		nodes.push(node);
+	}
+
+	for (var l in lineObjs) {
+		var line = lineObjs[l];
+		lines.push(line);
+	}
+
+	// for now, set selected node to be first node
+	for (var k in nodeObjs) {
+		break;
+	}
+	currentSelectedNode = k;
 }
