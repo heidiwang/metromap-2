@@ -24,11 +24,13 @@ var msnry = new Masonry( container, {
 
 // articlesObject should be fetched from server in the future and not from example javascript israel-data.js file
 function getArticlesObj(node, articles) {
+	var articlesObject = new Array();
 
-	console.log(node.id);
 	for (key in articles) {
 		var article = articles[key];
-		console.log(articles[key]);
+		if (node.id == articles[key].nodeID) {
+			articlesObject.push(articles[key]);
+		}
     }
 	return articlesObject;
 }
@@ -37,22 +39,20 @@ function getArticlesObj(node, articles) {
 function populateArticles(node) {
 	
 	var node = node;
-	// articlesObj = finalJson.articles;
-	// articles = finalJson.articles;
-
-	// here should be the query to the server... articlesObject is fetched from example javascript israel-data.js file
+	node.id = "2013060120130601_1";
 	var articlesObj = getArticlesObj(node, finalJson.articles);
-	articles = articlesObj.articles;
+	articles = getArticlesObj(node, finalJson.articles);
+
 	
-	console.log("old articles: ");
-	console.log(articles);
+	// console.log("old articles: ");
+	// console.log(articles);
 
 
-	console.log("new articles: ");
-	console.log(finalJson);
-	console.log(finalJson.articles);
+	// console.log("new articles: ");
+	// console.log(finalJson);
+	// console.log(finalJson.articles);
 
-	articles = finalJson.articles;
+	// articles = finalJson.articles;
 
 	// remove current articles 
 	while (container.hasChildNodes()) {
@@ -71,9 +71,6 @@ function populateArticles(node) {
 
 	
 
-	console.log(finalJson.length);
-	console.log(startingIndex);
-	console.log(articles.length);
 	drawArticles(startingIndex, articles.length-1, articles, msnry, node);		
 
 	
