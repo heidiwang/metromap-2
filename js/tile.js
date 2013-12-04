@@ -98,7 +98,7 @@ function getHeigth(article, heightReference, heightImportance, importanceUnit){
 }
 
 function generateRandomImportance(){
-	return Math.floor(Math.random()*6);
+	return Math.floor(1+Math.random()*5);
 
 }
 
