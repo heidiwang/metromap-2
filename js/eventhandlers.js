@@ -4,24 +4,20 @@ Map: Event handling
 
 function addEventHandlersToButton(){
 	$("#example1-btn").on('click', function(event){
-		data = finalJson;
-		initialize();
+		updateJSON(finalJson);
 	});
 	$("#example2-btn").on('click', function(event){
-		data = finalJson;
-		initialize();
+		updateJSON(finalJson2);
+
 	});
 	$("#example3-btn").on('click', function(event){
-		data = finalJson;
-		initialize();
+		updateJSON(finalJson3);
 	});
 	$("#example4-btn").on('click', function(event){
-		data = finalJson;
-		initialize();
+		updateJSON(finalJson4);
 	});
 	$("#example5-btn").on('click', function(event){
-		data = finalJson;
-		initialize();
+		updateJSON(finalJson5);
 	});
 
 }
