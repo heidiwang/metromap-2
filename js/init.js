@@ -25,9 +25,6 @@ var lines = [];
 var currentSelectedNode;
 updateJSON(finalJson);
 
-initialize();
-
-
 function initialize() {
 	/*$.getJSON( url, function( data ) {
 	  console.log(data);
@@ -71,4 +68,5 @@ function updateJSON(newData) {
 		break;
 	}
 	currentSelectedNode = k;
+	initialize();
 }
