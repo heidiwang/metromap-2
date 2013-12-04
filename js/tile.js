@@ -183,7 +183,7 @@ function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
 		var articleBackground = document.createElement('div');
 		articleBackground.className = "article-background-pic";
 		// CSS of this div
-		articleBackground.style.backgroundImage = 'url(' + articles[i].image + ')';
+		//articleBackground.style.backgroundImage = 'url(' + articles[i].image + ')';
 		articleBackground.style.top =  articleText.style.top;
 		articleBackground.style.left = articleText.offsetLeft + "px";
 		articleBackground.style.top = articleText.offsetTop + "px";
