@@ -81,6 +81,7 @@ function nodeClick(object, node) {
 		lightenColor(getNodeByID(currentSelectedNode));
 		currentSelectedNode = node.id;
 		layer.draw();
+		console.log(node);
 		populateArticles(node);
 	});
 }

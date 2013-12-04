@@ -67,8 +67,6 @@ function populateArticles(node) {
 		startingIndex = articles.length-2;
 	}
 
-	
-
 	drawArticles(startingIndex, articles.length-1, articles, msnry, node);		
 
 	
@@ -102,7 +100,6 @@ function generateRandomImportance(){
 
 // draw dynamically all the articles
 function drawArticles(startingArtInd, endArtInd, articles, msnry, node) {
-
 	// hide info element
 	$('.box #info').hide();
 

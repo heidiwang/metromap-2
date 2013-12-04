@@ -4,8 +4,6 @@ function updateJSON(newData) {
 	lines = [];
 	currentSelectedNode = null;
 	
-	console.log('in updateJSON');
-	console.log(newData);
 	var nodeObjs = newData.nodes;
 	var lineObjs = newData.lines;
 
