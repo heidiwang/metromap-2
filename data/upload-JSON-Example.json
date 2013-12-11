@@ -1,0 +1,51 @@
+{
+ "articles": {
+
+	"2013060311410000003": {
+		"publisher": "utsandiego", 
+		"title": "Azarenka beats Schiavone 6-3 , 6-0 at French Open ",
+		"importance": "1",
+		"timestamp": "2013-06-03",
+		"image": "/static/img.png",
+		"nodeID": "2013060320130603_4",
+		"url": "http://www.utsandiego.com/news/2013/jun/03/azarenka-beats-schiavone-6-3-6-0-at-french-open/",
+		"previewText": "Azarenka beats Schiavone 6-3 , 6-0 at French Open ...",
+		"id": "2013060311410000003"}
+
+		},
+
+ "lines": {
+
+ 	"1": {
+
+ 		"line_label": "san_antonio maria_sharapova french beats serena_williams antonio_express",
+ 		"nodeIDs": ["2013060320130603_4","2013060320130603_3"],
+ 		"id": 1}
+
+		},
+
+ "nodes": {
+ 	"2013060320130603_3": {
+ 		"lineIDs": [1],
+ 		 "importance": "2",
+ 		 "articleIDs": ["2013060619050000007", "2013060618050000015", "2013060619090000010", "2013060616550000009", "2013060614570000006"],
+ 		 "label": "5 things to watch in French Open men 's semifinals Page 1 of 2 ",
+ 		 "cluster_words": "federal roger tennis roger_federer",
+ 		 "time": "2013-06-06",
+ 		 "id": "2013060320130603_3"},
+
+ 	"2013060320130603_4": {
+ 		"lineIDs": [1],
+ 		 "importance": "1",
+ 		 "articleIDs": ["2013060619050000007", "2013060618050000015", "2013060619090000010", "2013060616550000009", "2013060614570000006"],
+ 		 "label": "5 things to watch in French Open men 's semifinals Page 1 of 2 ",
+ 		 "cluster_words": "federal roger tennis roger_federer",
+ 		 "time": "2013-06-06",
+ 		 "id": "2013060320130603_4"}
+ }
+
+}
+
+
+
+ 		 

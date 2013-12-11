@@ -17,10 +17,52 @@ function addEventHandlersToButton(){
 		updateJSON(finalJson4);
 	});
 	$("#example5-btn").on('click', function(event){
+		console.log(finalJson5);
 		updateJSON(finalJson5);
 	});
 
+	//upload Javascript example file
+	$("#uploadFile").on('click', function(event){
+		$("#uploadFileHelper").click();
+	})
+	$("#uploadFileHelper").on("change", function(event) { 
+		
+		$uploadErrorMessage = $("#uploadErrorMessage");
+		$uploadErrorMessage.hide();
+
+		var file = this.files[0];
+		var name = file.name;
+		var size = file.size;
+		var type = file.type;
+
+		// check it data ends with .json, if it doesnt return
+		if (name.substr(name.length-5) !== ".json") {
+			console.log("in wrong type");
+			$uploadErrorMessage.html("Wrong file type. JSON type in specific format is required: ");
+			$uploadErrorMessage.show();
+			return;
+		}
+
+		var fileReader = new FileReader();
+		fileReader.addEventListener("load", function(event) {
+			var textFile = event.target;
+			console.log(textFile.result);
+			// = jQuery.parseJSON(textFile.result);
+			var jsObj = JSON.parse(textFile.result);
+			// var jsObj = JSON.parse(jsonObj);
+			// console.log(JSON.stringify(jsObj));
+			// console.log(jsObj);
+			//UpdateJSON file for site with uploaded json
+			updateJSON(jsObj);
+
+		});
+
+        //Read the text file - triggers the load function of the fileReader
+        fileReader.readAsText(file);
+    });
 }
+
+
 
 function stagePan(object) {
 	object.on('mouseover', function() {
