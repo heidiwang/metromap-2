@@ -59,8 +59,6 @@ for (var k in nodeObjs) {
 }
 currentSelectedNode = k;
 
-Util.makeServerRequest("Tennis", "T06012013");
-
 initialize();
 
 function initialize() {

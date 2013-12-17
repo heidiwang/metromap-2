@@ -42,16 +42,7 @@ function populateArticles(node) {
 	articles = getArticlesObj(node, currentData.articles);
 
 
-	// console.log("old articles: ");
-	// console.log(articles);
-
-
-	// console.log("new articles: ");
-	// console.log(finalJson);
-	// console.log(finalJson.articles);
-
-	// articles = finalJson.articles;
-
+	
 	// remove current articles 
 	while (container.hasChildNodes()) {
 		//console.log("in remov");
@@ -60,13 +51,7 @@ function populateArticles(node) {
 	}
 
 	
-	// random # articles are shown -
-	// startingIndex = Math.floor(Math.random()*articles.length);
-	var startingIndex = 0;
-	if (startingIndex == articles.length-1){
-		startingIndex = articles.length-2;
-	}
-
+	var startingIndex = 0;	
 	drawArticles(startingIndex, articles.length-1, articles, msnry, node);		
 
 	
@@ -83,7 +68,7 @@ function getWidth(article, widthReference, importanceUnit){
 }
 
 
-// gets Height of respective article
+// gets Height of respective article based on importance
 function getHeigth(article, heightReference, heightImportance, importanceUnit){
 	var result = heightReference+(article.importance*importanceUnit);
 	if (heightImportance) {

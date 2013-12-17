@@ -17,7 +17,11 @@ function addEventHandlersToButton(){
 	});
 
 	$("#searchQuery-btn").on('click', function(event) {
-		console.log($("#searchDiv input"));
+		var queryString = $('#searchQueryInput').val();
+		var startDate = $('#startDateInput').val()	;
+		var period = $("#periodInput").val();
+		var timeFormat = getTimeFormat(startDate, period);
+		Util.makeServerRequest(queryString, timeFormat);
 	});
 
 	$("#example1-btn").on('click', function(event){
@@ -34,7 +38,6 @@ function addEventHandlersToButton(){
 		updateJSON(finalJson4);
 	});
 	$("#example5-btn").on('click', function(event){
-		console.log(finalJson5);
 		updateJSON(finalJson5);
 	});
 
@@ -190,3 +193,21 @@ function lightenColor(nodeData) {
 	var circleShape = nodeData.circleShape;
 	circleShape.setFill(colors[firstLine]);
 }
+
+function getTimeFormat(startDate, period) {
+	var timeFormat = "";
+	if (period === "Week"){
+		timeFormat = "W";
+	}
+	else if (period === "Month" ) {
+		timeFormat = "M";
+	}
+	else if (period === "Tri-month") {
+		timeFormat = "T";
+	}
+
+	timeFormat += startDate.replace('/','');
+	timeFormat = timeFormat.replace('/','');
+	return timeFormat;
+}
+	

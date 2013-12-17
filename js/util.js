@@ -1,10 +1,16 @@
 (function(window, document, undefined) {
 	var Util = {};
 
+
+	// class method to request json data from server
 	Util.makeServerRequest = function(queryString, timeFormat){
 		// ilws19.stanford.edu:8089/tennis/W06142013
-		jQuery.getJSON("http://ilws19.stanford.edu:8089/"+queryString+"/"+timeFormat, function(data){
-			console.log(data);
+		console.log("server request started");
+		var queryString = "http://ilws19.stanford.edu:8089/"+queryString+"/"+timeFormat;
+		console.log(queryString);	
+		jQuery.getJSON(queryString, function(data){
+			updateJSON(data);
+
 		});
 
 
@@ -26,6 +32,7 @@
 };
 
 
+// picks randomnly one of the predefined colorArrays (up to five colors)
 Util.getColorArray = function(nrOfColors) {
 	var result = new Array();
 	var colorArrayOverview = new Array();
@@ -54,13 +61,15 @@ Util.getColorArray = function(nrOfColors) {
 
  };
 
+
+// colors for hover and Tiles / preview of articles
  Util.getHighlightedColor = function(color) {
  	var reduceRGBby = 20;
  	var articleColorRGB = hexToRgb(color);
  	var articleColor = rgbToHex(Math.max(articleColorRGB.r - reduceRGBby,0),Math.max(articleColorRGB.g - reduceRGBby,0) , Math.max(articleColorRGB.b - reduceRGBby,0));
  	return articleColor;
  };
-
+//helper method
  function hexToRgb(hex) {
  	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
  	return result ? {
@@ -69,12 +78,14 @@ Util.getColorArray = function(nrOfColors) {
  		b: parseInt(result[3], 16)
  	} : null;
  }
-
+ 
+//helper method
  function componentToHex(c) {
  	var hex = c.toString(16);
  	return hex.length == 1 ? "0" + hex : hex;
  }
 
+//helper method
  function rgbToHex(r, g, b) {
  	return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
  }
