@@ -3,6 +3,23 @@ Map: Event handling
 **************************/
 
 function addEventHandlersToButton(){
+
+	$('.exampleFilesHidden').on('click', function(event){
+		$(this).hide();
+		$('.exampleFilesShown').show();
+		$('.exampleFiles').show();
+	});
+
+	$('.exampleFilesShown').on('click', function(event){
+		$(this).hide();
+		$('.exampleFilesHidden').show();
+		$('.exampleFiles').hide();
+	});
+
+	$("#searchQuery-btn").on('click', function(event) {
+		console.log($("#searchDiv input"));
+	});
+
 	$("#example1-btn").on('click', function(event){
 		updateJSON(finalJson);
 	});
@@ -25,6 +42,7 @@ function addEventHandlersToButton(){
 	$("#uploadFile").on('click', function(event){
 		$("#uploadFileHelper").click();
 	})
+	//upload Javascript example file
 	$("#uploadFileHelper").on("change", function(event) { 
 		
 		$uploadErrorMessage = $("#uploadErrorMessage");
@@ -37,7 +55,6 @@ function addEventHandlersToButton(){
 
 		// check it data ends with .json, if it doesnt return
 		if (name.substr(name.length-5) !== ".json") {
-			console.log("in wrong type");
 			$uploadErrorMessage.html("Wrong file type. JSON type in specific format is required: ");
 			$uploadErrorMessage.show();
 			return;

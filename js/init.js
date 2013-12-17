@@ -15,6 +15,21 @@ $.getJSON( url, function( data ) {
 addEventHandlersToButton();
 
 
+
+(function($) {
+$(document).ready(function(){
+	$(".datepicker").datepicker();
+	var myDate = new Date();
+	var prettyDate =(myDate.getMonth()) + '/' + myDate.getDate() + '/' + myDate.getFullYear();
+	$(".datepicker").val(prettyDate);
+
+
+});
+})(jQuery);
+
+
+
+
 // Global variables
 var stage;
 var layer;
@@ -43,6 +58,8 @@ for (var k in nodeObjs) {
 	break;
 }
 currentSelectedNode = k;
+
+Util.makeServerRequest("Tennis", "T06012013");
 
 initialize();
 
